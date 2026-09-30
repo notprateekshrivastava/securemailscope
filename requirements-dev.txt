@@ -1,0 +1,6 @@
+# Development and verification tools. Install with:
+#   pip install -r requirements-dev.txt
+# Not needed to run the API; only for the test suite.
+-r requirements.txt
+pytest>=8.0.0
+esprima>=4.0.1  # parses the dashboard's inline JavaScript in tests

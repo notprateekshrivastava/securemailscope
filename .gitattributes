@@ -1,0 +1,25 @@
+# Capture files are binary: never diff or merge them, and never let git try to
+# convert line endings inside them.
+*.pcap      binary
+*.pcapng    binary
+*.cap       binary
+*.pcap.gz   binary
+*.cap.gz    binary
+
+# Generated and downloadable artefacts should not appear in diffs.
+*.joblib    binary
+*.pdf       binary
+
+# Text files normalised to LF in the repository, so the code behaves the same on
+# Windows, Linux and macOS.
+*.py        text eol=lf
+*.md        text eol=lf
+*.txt       text eol=lf
+*.yml       text eol=lf
+*.yaml      text eol=lf
+*.json      text eol=lf
+*.ps1       text eol=crlf
+*.csv       text eol=lf
+
+# Keep the language statistics honest: the dashboard is generated HTML, not source.
+app/dashboard.py linguist-generated=false

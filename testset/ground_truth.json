@@ -1,0 +1,3734 @@
+{
+  "dataset": "SecureMailScope held-out test set",
+  "version": "1.0",
+  "purpose": "Measure the analyzer and the ML layer on captures that were generated after the model was trained, on an axis (STARTTLS/STLS upgrade paths) the training captures did not cover. Synthetic and self-generated: this is not human analyst ground truth, and it measures rule agreement, not real-world accuracy.",
+  "expectations_written": "before capture",
+  "captures": [
+    {
+      "group": "singles",
+      "name": "smtp-587-starttls-modern",
+      "file": "testset/captures/smtp-587-starttls-modern.pcapng",
+      "bytes": 6700,
+      "sessions": [
+        {
+          "protocol": "SMTP",
+          "server_port": 587,
+          "mode": "smtp_secure",
+          "profile": "modern",
+          "implicit_tls": false,
+          "expect_findings": [],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "NO_FORWARD_SECRECY",
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": "LOW",
+          "class_band": null,
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": true
+          },
+          "client_port": 55560,
+          "rounds": 1
+        }
+      ],
+      "capture_result": {
+        "scenario": "smtp-587-starttls-modern",
+        "capture": "testset/captures/smtp-587-starttls-modern.pcapng",
+        "bytes": 6700,
+        "payload_packets": 14,
+        "server_result": {
+          "client_port": 55560,
+          "negotiated_version": "TLSv1.2",
+          "negotiated_cipher": "ECDHE-RSA-AES128-GCM-SHA256",
+          "auth_seen": true,
+          "auth_after_tls": true
+        },
+        "server_error": null,
+        "client_result": {
+          "greeting": "220 lab.lab.test ESMTP SecureMailScope mock",
+          "ehlo": [
+            "250-lab.lab.test",
+            "250-SIZE 10240000",
+            "250-STARTTLS",
+            "250 AUTH PLAIN LOGIN"
+          ],
+          "starttls_response": "220 2.0.0 Ready to start TLS",
+          "client_version": "TLSv1.2",
+          "client_cipher": "ECDHE-RSA-AES128-GCM-SHA256",
+          "auth_response": "250-SIZE 10240000",
+          "quit_response": "250-STARTTLS"
+        },
+        "client_error": null
+      }
+    },
+    {
+      "group": "singles",
+      "name": "smtp-587-starttls-legacy-tls10",
+      "file": "testset/captures/smtp-587-starttls-legacy-tls10.pcapng",
+      "bytes": 7316,
+      "sessions": [
+        {
+          "protocol": "SMTP",
+          "server_port": 587,
+          "mode": "smtp_secure",
+          "profile": "legacy-tls10",
+          "implicit_tls": false,
+          "expect_findings": [
+            "DEPRECATED_TLS_VERSION",
+            "NO_FORWARD_SECRECY"
+          ],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "INSECURE_CIPHER",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": null,
+          "class_band": [
+            "HIGH",
+            "CRITICAL"
+          ],
+          "facts": {
+            "tls_version": "TLS 1.0",
+            "cert_observed": true,
+            "forward_secrecy": false
+          },
+          "client_port": 55562,
+          "rounds": 1
+        }
+      ],
+      "capture_result": {
+        "scenario": "smtp-587-starttls-legacy-tls10",
+        "capture": "testset/captures/smtp-587-starttls-legacy-tls10.pcapng",
+        "bytes": 7316,
+        "payload_packets": 16,
+        "server_result": {
+          "client_port": 55562,
+          "negotiated_version": "TLSv1",
+          "negotiated_cipher": "AES128-SHA",
+          "auth_seen": true,
+          "auth_after_tls": true
+        },
+        "server_error": null,
+        "client_result": {
+          "greeting": "220 lab.lab.test ESMTP SecureMailScope mock",
+          "ehlo": [
+            "250-lab.lab.test",
+            "250-SIZE 10240000",
+            "250-STARTTLS",
+            "250 AUTH PLAIN LOGIN"
+          ],
+          "starttls_response": "220 2.0.0 Ready to start TLS",
+          "client_version": "TLSv1",
+          "client_cipher": "AES128-SHA",
+          "auth_response": "250-SIZE 10240000",
+          "quit_response": "250-STARTTLS"
+        },
+        "client_error": null
+      }
+    },
+    {
+      "group": "singles",
+      "name": "smtp-587-starttls-weak-cert",
+      "file": "testset/captures/smtp-587-starttls-weak-cert.pcapng",
+      "bytes": 6680,
+      "sessions": [
+        {
+          "protocol": "SMTP",
+          "server_port": 587,
+          "mode": "smtp_secure",
+          "profile": "weak-cert",
+          "implicit_tls": false,
+          "expect_findings": [
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY",
+            "CERTIFICATE_HOSTNAME_MISMATCH"
+          ],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": null,
+          "class_band": [
+            "HIGH",
+            "CRITICAL"
+          ],
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": true
+          },
+          "client_port": 55568,
+          "rounds": 1
+        }
+      ],
+      "capture_result": {
+        "scenario": "smtp-587-starttls-weak-cert",
+        "capture": "testset/captures/smtp-587-starttls-weak-cert.pcapng",
+        "bytes": 6680,
+        "payload_packets": 15,
+        "server_result": {
+          "client_port": 55568,
+          "negotiated_version": "TLSv1.2",
+          "negotiated_cipher": "ECDHE-RSA-AES128-GCM-SHA256",
+          "auth_seen": true,
+          "auth_after_tls": true,
+          "starttls_upgraded": true
+        },
+        "server_error": null,
+        "client_result": {
+          "greeting": "220 lab.lab.test ESMTP SecureMailScope mock",
+          "ehlo": [
+            "250-lab.lab.test",
+            "250-SIZE 10240000",
+            "250-STARTTLS",
+            "250 AUTH PLAIN LOGIN"
+          ],
+          "starttls_response": "220 2.0.0 Ready to start TLS",
+          "client_version": "TLSv1.2",
+          "client_cipher": "ECDHE-RSA-AES128-GCM-SHA256",
+          "auth_response": "250-SIZE 10240000",
+          "quit_response": "250-STARTTLS"
+        },
+        "client_error": null
+      }
+    },
+    {
+      "group": "singles",
+      "name": "smtp-587-starttls-cbc",
+      "file": "testset/captures/smtp-587-starttls-cbc.pcapng",
+      "bytes": 6880,
+      "sessions": [
+        {
+          "protocol": "SMTP",
+          "server_port": 587,
+          "mode": "smtp_secure",
+          "profile": "cbc-only",
+          "implicit_tls": false,
+          "expect_findings": [
+            "LEGACY_CBC_CIPHER"
+          ],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "DEPRECATED_TLS_VERSION",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": null,
+          "class_band": [
+            "MEDIUM",
+            "HIGH"
+          ],
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": true
+          },
+          "client_port": 55576,
+          "rounds": 1
+        }
+      ],
+      "capture_result": {
+        "scenario": "smtp-587-starttls-cbc",
+        "capture": "testset/captures/smtp-587-starttls-cbc.pcapng",
+        "bytes": 6880,
+        "payload_packets": 14,
+        "server_result": {
+          "client_port": 55576,
+          "negotiated_version": "TLSv1.2",
+          "negotiated_cipher": "ECDHE-RSA-AES128-SHA",
+          "auth_seen": true,
+          "auth_after_tls": true
+        },
+        "server_error": null,
+        "client_result": {
+          "greeting": "220 lab.lab.test ESMTP SecureMailScope mock",
+          "ehlo": [
+            "250-lab.lab.test",
+            "250-SIZE 10240000",
+            "250-STARTTLS",
+            "250 AUTH PLAIN LOGIN"
+          ],
+          "starttls_response": "220 2.0.0 Ready to start TLS",
+          "client_version": "TLSv1.2",
+          "client_cipher": "ECDHE-RSA-AES128-SHA",
+          "auth_response": "250-SIZE 10240000",
+          "quit_response": "250-STARTTLS"
+        },
+        "client_error": null
+      }
+    },
+    {
+      "group": "singles",
+      "name": "smtp-587-starttls-static-rsa",
+      "file": "testset/captures/smtp-587-starttls-static-rsa.pcapng",
+      "bytes": 6764,
+      "sessions": [
+        {
+          "protocol": "SMTP",
+          "server_port": 587,
+          "mode": "smtp_secure",
+          "profile": "static-rsa",
+          "implicit_tls": false,
+          "expect_findings": [
+            "NO_FORWARD_SECRECY"
+          ],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": null,
+          "class_band": [
+            "MEDIUM",
+            "HIGH"
+          ],
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": false
+          },
+          "client_port": 55580,
+          "rounds": 1
+        }
+      ],
+      "capture_result": {
+        "scenario": "smtp-587-starttls-static-rsa",
+        "capture": "testset/captures/smtp-587-starttls-static-rsa.pcapng",
+        "bytes": 6764,
+        "payload_packets": 14,
+        "server_result": {
+          "client_port": 55580,
+          "negotiated_version": "TLSv1.2",
+          "negotiated_cipher": "AES128-SHA",
+          "auth_seen": true,
+          "auth_after_tls": true
+        },
+        "server_error": null,
+        "client_result": {
+          "greeting": "220 lab.lab.test ESMTP SecureMailScope mock",
+          "ehlo": [
+            "250-lab.lab.test",
+            "250-SIZE 10240000",
+            "250-STARTTLS",
+            "250 AUTH PLAIN LOGIN"
+          ],
+          "starttls_response": "220 2.0.0 Ready to start TLS",
+          "client_version": "TLSv1.2",
+          "client_cipher": "AES128-SHA",
+          "auth_response": "250-SIZE 10240000",
+          "quit_response": "250-STARTTLS"
+        },
+        "client_error": null
+      }
+    },
+    {
+      "group": "singles",
+      "name": "smtp-25-starttls-rejected",
+      "file": "testset/captures/smtp-25-starttls-rejected.pcapng",
+      "bytes": 2328,
+      "sessions": [
+        {
+          "protocol": "SMTP",
+          "server_port": 25,
+          "mode": "smtp_reject_starttls",
+          "profile": null,
+          "implicit_tls": false,
+          "expect_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION"
+          ],
+          "forbid_findings": [
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "NO_FORWARD_SECRECY",
+            "LEGACY_CBC_CIPHER",
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY"
+          ],
+          "class_exact": "CRITICAL",
+          "class_band": null,
+          "facts": {
+            "tls_version": null,
+            "cert_observed": false
+          },
+          "client_port": 33818,
+          "rounds": 1
+        }
+      ],
+      "capture_result": {
+        "scenario": "smtp-25-starttls-rejected",
+        "capture": "testset/captures/smtp-25-starttls-rejected.pcapng",
+        "bytes": 2328,
+        "payload_packets": 9,
+        "server_result": {
+          "client_port": 33818,
+          "auth_seen": true,
+          "auth_after_tls": false,
+          "starttls_upgraded": false
+        },
+        "server_error": null,
+        "client_result": {
+          "greeting": "220 lab.lab.test ESMTP SecureMailScope mock",
+          "ehlo": [
+            "250-lab.lab.test",
+            "250-STARTTLS",
+            "250 AUTH PLAIN LOGIN"
+          ],
+          "starttls_response": "454 4.7.0 TLS not available due to temporary reason",
+          "auth_response": "235 2.7.0 Authentication successful",
+          "quit_response": "221 2.0.0 Bye"
+        },
+        "client_error": null
+      }
+    },
+    {
+      "group": "singles",
+      "name": "smtp-2525-no-starttls",
+      "file": "testset/captures/smtp-2525-no-starttls.pcapng",
+      "bytes": 2060,
+      "sessions": [
+        {
+          "protocol": "SMTP",
+          "server_port": 2525,
+          "mode": "smtp_no_starttls",
+          "profile": null,
+          "implicit_tls": false,
+          "expect_findings": [
+            "PLAINTEXT_AUTHENTICATION"
+          ],
+          "forbid_findings": [
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "NO_FORWARD_SECRECY",
+            "LEGACY_CBC_CIPHER",
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY"
+          ],
+          "class_exact": "CRITICAL",
+          "class_band": null,
+          "facts": {
+            "tls_version": null,
+            "cert_observed": false
+          },
+          "client_port": 57432,
+          "rounds": 1
+        }
+      ],
+      "capture_result": {
+        "scenario": "smtp-2525-no-starttls",
+        "capture": "testset/captures/smtp-2525-no-starttls.pcapng",
+        "bytes": 2060,
+        "payload_packets": 7,
+        "server_result": {
+          "client_port": 57432,
+          "auth_seen": true,
+          "auth_after_tls": false,
+          "starttls_upgraded": false
+        },
+        "server_error": null,
+        "client_result": {
+          "greeting": "220 lab.lab.test ESMTP SecureMailScope mock",
+          "ehlo": [
+            "250-lab.lab.test",
+            "250 AUTH PLAIN LOGIN"
+          ],
+          "starttls_response": "not attempted - no cleartext upgrade step",
+          "auth_response": "235 2.7.0 Authentication successful",
+          "quit_response": "221 2.0.0 Bye"
+        },
+        "client_error": null
+      }
+    },
+    {
+      "group": "singles",
+      "name": "imap-143-starttls-modern",
+      "file": "testset/captures/imap-143-starttls-modern.pcapng",
+      "bytes": 6972,
+      "sessions": [
+        {
+          "protocol": "IMAP",
+          "server_port": 143,
+          "mode": "imap_starttls",
+          "profile": "modern",
+          "implicit_tls": false,
+          "expect_findings": [],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "NO_FORWARD_SECRECY",
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": "LOW",
+          "class_band": null,
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": true
+          },
+          "client_port": 34122,
+          "rounds": 1
+        }
+      ],
+      "capture_result": {
+        "scenario": "imap-143-starttls-modern",
+        "capture": "testset/captures/imap-143-starttls-modern.pcapng",
+        "bytes": 6972,
+        "payload_packets": 16,
+        "server_result": {
+          "client_port": 34122,
+          "negotiated_version": "TLSv1.2",
+          "negotiated_cipher": "ECDHE-RSA-AES128-GCM-SHA256",
+          "auth_seen": true,
+          "auth_after_tls": true,
+          "starttls_upgraded": true
+        },
+        "server_error": null,
+        "client_result": {
+          "greeting": "* OK [CAPABILITY IMAP4rev1 IDLE STARTTLS AUTH=PLAIN] SecureMailScope mock ready",
+          "capability": "c1 OK [CAPABILITY IMAP4rev1 IDLE STARTTLS AUTH=PLAIN] capabilities listed",
+          "starttls_response": "c2 OK Begin TLS negotiation now",
+          "client_version": "TLSv1.2",
+          "client_cipher": "ECDHE-RSA-AES128-GCM-SHA256",
+          "login_response": "c3 OK LOGIN completed",
+          "select_response": "c4 OK completed",
+          "logout_response": "* BYE logging out"
+        },
+        "client_error": null
+      }
+    },
+    {
+      "group": "singles",
+      "name": "imap-143-starttls-legacy-tls10",
+      "file": "testset/captures/imap-143-starttls-legacy-tls10.pcapng",
+      "bytes": 8672,
+      "sessions": [
+        {
+          "protocol": "IMAP",
+          "server_port": 143,
+          "mode": "imap_starttls",
+          "profile": "legacy-tls10",
+          "implicit_tls": false,
+          "expect_findings": [
+            "DEPRECATED_TLS_VERSION",
+            "NO_FORWARD_SECRECY"
+          ],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "INSECURE_CIPHER",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": null,
+          "class_band": [
+            "HIGH",
+            "CRITICAL"
+          ],
+          "facts": {
+            "tls_version": "TLS 1.0",
+            "cert_observed": true,
+            "forward_secrecy": false
+          },
+          "client_port": 34126,
+          "rounds": 1
+        }
+      ],
+      "capture_result": {
+        "scenario": "imap-143-starttls-legacy-tls10",
+        "capture": "testset/captures/imap-143-starttls-legacy-tls10.pcapng",
+        "bytes": 8672,
+        "payload_packets": 21,
+        "server_result": {
+          "client_port": 34126,
+          "negotiated_version": "TLSv1",
+          "negotiated_cipher": "AES128-SHA",
+          "auth_seen": true,
+          "auth_after_tls": true,
+          "starttls_upgraded": true
+        },
+        "server_error": null,
+        "client_result": {
+          "greeting": "* OK [CAPABILITY IMAP4rev1 IDLE STARTTLS AUTH=PLAIN] SecureMailScope mock ready",
+          "capability": "c1 OK [CAPABILITY IMAP4rev1 IDLE STARTTLS AUTH=PLAIN] capabilities listed",
+          "starttls_response": "c2 OK Begin TLS negotiation now",
+          "client_version": "TLSv1",
+          "client_cipher": "AES128-SHA",
+          "login_response": "c3 OK LOGIN completed",
+          "select_response": "c4 OK completed",
+          "logout_response": "* BYE logging out"
+        },
+        "client_error": null
+      }
+    },
+    {
+      "group": "singles",
+      "name": "imap-143-starttls-weak-cert",
+      "file": "testset/captures/imap-143-starttls-weak-cert.pcapng",
+      "bytes": 6696,
+      "sessions": [
+        {
+          "protocol": "IMAP",
+          "server_port": 143,
+          "mode": "imap_starttls",
+          "profile": "weak-cert",
+          "implicit_tls": false,
+          "expect_findings": [
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY",
+            "CERTIFICATE_HOSTNAME_MISMATCH"
+          ],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": null,
+          "class_band": [
+            "HIGH",
+            "CRITICAL"
+          ],
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": true
+          },
+          "client_port": 49804,
+          "rounds": 1
+        }
+      ],
+      "capture_result": {
+        "scenario": "imap-143-starttls-weak-cert",
+        "capture": "testset/captures/imap-143-starttls-weak-cert.pcapng",
+        "bytes": 6696,
+        "payload_packets": 16,
+        "server_result": {
+          "client_port": 49804,
+          "negotiated_version": "TLSv1.2",
+          "negotiated_cipher": "ECDHE-RSA-AES128-GCM-SHA256",
+          "auth_seen": true,
+          "auth_after_tls": true,
+          "starttls_upgraded": true
+        },
+        "server_error": null,
+        "client_result": {
+          "greeting": "* OK [CAPABILITY IMAP4rev1 IDLE STARTTLS AUTH=PLAIN] SecureMailScope mock ready",
+          "capability": "c1 OK [CAPABILITY IMAP4rev1 IDLE STARTTLS AUTH=PLAIN] capabilities listed",
+          "starttls_response": "c2 OK Begin TLS negotiation now",
+          "client_version": "TLSv1.2",
+          "client_cipher": "ECDHE-RSA-AES128-GCM-SHA256",
+          "login_response": "c3 OK LOGIN completed",
+          "select_response": "c4 OK completed",
+          "logout_response": "* BYE logging out"
+        },
+        "client_error": null
+      }
+    },
+    {
+      "group": "singles",
+      "name": "imap-143-starttls-cbc",
+      "file": "testset/captures/imap-143-starttls-cbc.pcapng",
+      "bytes": 7204,
+      "sessions": [
+        {
+          "protocol": "IMAP",
+          "server_port": 143,
+          "mode": "imap_starttls",
+          "profile": "cbc-only",
+          "implicit_tls": false,
+          "expect_findings": [
+            "LEGACY_CBC_CIPHER"
+          ],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "DEPRECATED_TLS_VERSION",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": null,
+          "class_band": [
+            "MEDIUM",
+            "HIGH"
+          ],
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": true
+          },
+          "client_port": 49814,
+          "rounds": 1
+        }
+      ],
+      "capture_result": {
+        "scenario": "imap-143-starttls-cbc",
+        "capture": "testset/captures/imap-143-starttls-cbc.pcapng",
+        "bytes": 7204,
+        "payload_packets": 16,
+        "server_result": {
+          "client_port": 49814,
+          "negotiated_version": "TLSv1.2",
+          "negotiated_cipher": "ECDHE-RSA-AES128-SHA",
+          "auth_seen": true,
+          "auth_after_tls": true,
+          "starttls_upgraded": true
+        },
+        "server_error": null,
+        "client_result": {
+          "greeting": "* OK [CAPABILITY IMAP4rev1 IDLE STARTTLS AUTH=PLAIN] SecureMailScope mock ready",
+          "capability": "c1 OK [CAPABILITY IMAP4rev1 IDLE STARTTLS AUTH=PLAIN] capabilities listed",
+          "starttls_response": "c2 OK Begin TLS negotiation now",
+          "client_version": "TLSv1.2",
+          "client_cipher": "ECDHE-RSA-AES128-SHA",
+          "login_response": "c3 OK LOGIN completed",
+          "select_response": "c4 OK completed",
+          "logout_response": "* BYE logging out"
+        },
+        "client_error": null
+      }
+    },
+    {
+      "group": "singles",
+      "name": "imap-143-starttls-null-cipher",
+      "file": "testset/captures/imap-143-starttls-null-cipher.pcapng",
+      "bytes": 6832,
+      "sessions": [
+        {
+          "protocol": "IMAP",
+          "server_port": 143,
+          "mode": "imap_starttls",
+          "profile": "null-cipher",
+          "implicit_tls": false,
+          "expect_findings": [
+            "INSECURE_CIPHER"
+          ],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": null,
+          "class_band": [
+            "HIGH",
+            "CRITICAL"
+          ],
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true
+          },
+          "client_port": 49830,
+          "rounds": 1
+        }
+      ],
+      "capture_result": {
+        "scenario": "imap-143-starttls-null-cipher",
+        "capture": "testset/captures/imap-143-starttls-null-cipher.pcapng",
+        "bytes": 6832,
+        "payload_packets": 16,
+        "server_result": {
+          "client_port": 49830,
+          "negotiated_version": "TLSv1.2",
+          "negotiated_cipher": "NULL-SHA",
+          "auth_seen": true,
+          "auth_after_tls": true,
+          "starttls_upgraded": true
+        },
+        "server_error": null,
+        "client_result": {
+          "greeting": "* OK [CAPABILITY IMAP4rev1 IDLE STARTTLS AUTH=PLAIN] SecureMailScope mock ready",
+          "capability": "c1 OK [CAPABILITY IMAP4rev1 IDLE STARTTLS AUTH=PLAIN] capabilities listed",
+          "starttls_response": "c2 OK Begin TLS negotiation now",
+          "client_version": "TLSv1.2",
+          "client_cipher": "NULL-SHA",
+          "login_response": "c3 OK LOGIN completed",
+          "select_response": "c4 OK completed",
+          "logout_response": "* BYE logging out"
+        },
+        "client_error": null
+      }
+    },
+    {
+      "group": "singles",
+      "name": "imap-143-starttls-rejected",
+      "file": "testset/captures/imap-143-starttls-rejected.pcapng",
+      "bytes": 2292,
+      "sessions": [
+        {
+          "protocol": "IMAP",
+          "server_port": 143,
+          "mode": "imap_reject_starttls",
+          "profile": null,
+          "implicit_tls": false,
+          "expect_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION"
+          ],
+          "forbid_findings": [
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "NO_FORWARD_SECRECY",
+            "LEGACY_CBC_CIPHER",
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY"
+          ],
+          "class_exact": "CRITICAL",
+          "class_band": null,
+          "facts": {
+            "tls_version": null,
+            "cert_observed": false
+          },
+          "client_port": 49834,
+          "rounds": 1
+        }
+      ],
+      "capture_result": {
+        "scenario": "imap-143-starttls-rejected",
+        "capture": "testset/captures/imap-143-starttls-rejected.pcapng",
+        "bytes": 2292,
+        "payload_packets": 10,
+        "server_result": {
+          "client_port": 49834,
+          "auth_seen": true,
+          "auth_after_tls": false,
+          "starttls_upgraded": false
+        },
+        "server_error": null,
+        "client_result": {
+          "greeting": "* OK [CAPABILITY IMAP4rev1 IDLE STARTTLS AUTH=PLAIN] SecureMailScope mock ready",
+          "capability": "d1 OK [CAPABILITY IMAP4rev1 IDLE STARTTLS AUTH=PLAIN] capabilities listed",
+          "starttls_response": "d2 NO TLS not available on this server",
+          "login_response": "d3 OK LOGIN completed",
+          "logout_response": "* BYE logging out"
+        },
+        "client_error": null
+      }
+    },
+    {
+      "group": "singles",
+      "name": "imap-8143-cleartext-login",
+      "file": "testset/captures/imap-8143-cleartext-login.pcapng",
+      "bytes": 6916,
+      "sessions": [
+        {
+          "protocol": "IMAP",
+          "server_port": 8143,
+          "mode": "imap_cleartext_login",
+          "profile": "modern",
+          "implicit_tls": false,
+          "expect_findings": [
+            "PLAINTEXT_AUTHENTICATION"
+          ],
+          "forbid_findings": [
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "NO_FORWARD_SECRECY",
+            "LEGACY_CBC_CIPHER",
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": "CRITICAL",
+          "class_band": null,
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": true
+          },
+          "client_port": 47280,
+          "rounds": 1
+        }
+      ],
+      "capture_result": {
+        "scenario": "imap-8143-cleartext-login",
+        "capture": "testset/captures/imap-8143-cleartext-login.pcapng",
+        "bytes": 6916,
+        "payload_packets": 16,
+        "server_result": {
+          "client_port": 47280,
+          "auth_seen": true,
+          "auth_after_tls": false,
+          "negotiated_version": "TLSv1.2",
+          "negotiated_cipher": "ECDHE-RSA-AES128-GCM-SHA256",
+          "starttls_upgraded": true
+        },
+        "server_error": null,
+        "client_result": {
+          "greeting": "* OK [CAPABILITY IMAP4rev1 IDLE STARTTLS AUTH=PLAIN] SecureMailScope mock ready",
+          "capability": "a1 OK [CAPABILITY IMAP4rev1 IDLE STARTTLS AUTH=PLAIN] capabilities listed",
+          "login_response": "a2 OK LOGIN completed",
+          "starttls_response": "a3 OK Begin TLS negotiation now",
+          "client_version": "TLSv1.2",
+          "client_cipher": "ECDHE-RSA-AES128-GCM-SHA256",
+          "select_response": "a4 OK completed",
+          "logout_response": "* BYE logging out"
+        },
+        "client_error": null
+      }
+    },
+    {
+      "group": "singles",
+      "name": "pop3-110-stls-modern",
+      "file": "testset/captures/pop3-110-stls-modern.pcapng",
+      "bytes": 7172,
+      "sessions": [
+        {
+          "protocol": "POP3",
+          "server_port": 110,
+          "mode": "pop3_stls",
+          "profile": "modern",
+          "implicit_tls": false,
+          "expect_findings": [],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "NO_FORWARD_SECRECY",
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": "LOW",
+          "class_band": null,
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": true
+          },
+          "client_port": 35366,
+          "rounds": 1
+        }
+      ],
+      "capture_result": {
+        "scenario": "pop3-110-stls-modern",
+        "capture": "testset/captures/pop3-110-stls-modern.pcapng",
+        "bytes": 7172,
+        "payload_packets": 17,
+        "server_result": {
+          "client_port": 35366,
+          "negotiated_version": "TLSv1.2",
+          "negotiated_cipher": "ECDHE-RSA-AES128-GCM-SHA256",
+          "starttls_upgraded": true,
+          "auth_seen": true,
+          "auth_after_tls": true
+        },
+        "server_error": null,
+        "client_result": {
+          "greeting": "+OK SecureMailScope mock POP3 ready",
+          "capa": [
+            "+OK Capability list follows",
+            "USER",
+            "STLS",
+            "."
+          ],
+          "stls_response": "+OK Begin TLS negotiation now",
+          "client_version": "TLSv1.2",
+          "client_cipher": "ECDHE-RSA-AES128-GCM-SHA256",
+          "user_response": "+OK user accepted",
+          "pass_response": "+OK mailbox ready",
+          "stat_response": "+OK 1 512",
+          "quit_response": "+OK bye"
+        },
+        "client_error": null
+      }
+    },
+    {
+      "group": "singles",
+      "name": "pop3-110-stls-legacy-tls10",
+      "file": "testset/captures/pop3-110-stls-legacy-tls10.pcapng",
+      "bytes": 9588,
+      "sessions": [
+        {
+          "protocol": "POP3",
+          "server_port": 110,
+          "mode": "pop3_stls",
+          "profile": "legacy-tls10",
+          "implicit_tls": false,
+          "expect_findings": [
+            "DEPRECATED_TLS_VERSION",
+            "NO_FORWARD_SECRECY"
+          ],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "INSECURE_CIPHER",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": null,
+          "class_band": [
+            "HIGH",
+            "CRITICAL"
+          ],
+          "facts": {
+            "tls_version": "TLS 1.0",
+            "cert_observed": true,
+            "forward_secrecy": false
+          },
+          "client_port": 35382,
+          "rounds": 1
+        }
+      ],
+      "capture_result": {
+        "scenario": "pop3-110-stls-legacy-tls10",
+        "capture": "testset/captures/pop3-110-stls-legacy-tls10.pcapng",
+        "bytes": 9588,
+        "payload_packets": 25,
+        "server_result": {
+          "client_port": 35382,
+          "negotiated_version": "TLSv1",
+          "negotiated_cipher": "AES128-SHA",
+          "starttls_upgraded": true,
+          "auth_seen": true,
+          "auth_after_tls": true
+        },
+        "server_error": null,
+        "client_result": {
+          "greeting": "+OK SecureMailScope mock POP3 ready",
+          "capa": [
+            "+OK Capability list follows",
+            "USER",
+            "STLS",
+            "."
+          ],
+          "stls_response": "+OK Begin TLS negotiation now",
+          "client_version": "TLSv1",
+          "client_cipher": "AES128-SHA",
+          "user_response": "+OK user accepted",
+          "pass_response": "+OK mailbox ready",
+          "stat_response": "+OK 1 512",
+          "quit_response": "+OK bye"
+        },
+        "client_error": null
+      }
+    },
+    {
+      "group": "singles",
+      "name": "pop3-110-stls-weak-cert",
+      "file": "testset/captures/pop3-110-stls-weak-cert.pcapng",
+      "bytes": 6896,
+      "sessions": [
+        {
+          "protocol": "POP3",
+          "server_port": 110,
+          "mode": "pop3_stls",
+          "profile": "weak-cert",
+          "implicit_tls": false,
+          "expect_findings": [
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY",
+            "CERTIFICATE_HOSTNAME_MISMATCH"
+          ],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": null,
+          "class_band": [
+            "HIGH",
+            "CRITICAL"
+          ],
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": true
+          },
+          "client_port": 35394,
+          "rounds": 1
+        }
+      ],
+      "capture_result": {
+        "scenario": "pop3-110-stls-weak-cert",
+        "capture": "testset/captures/pop3-110-stls-weak-cert.pcapng",
+        "bytes": 6896,
+        "payload_packets": 17,
+        "server_result": {
+          "client_port": 35394,
+          "negotiated_version": "TLSv1.2",
+          "negotiated_cipher": "ECDHE-RSA-AES128-GCM-SHA256",
+          "starttls_upgraded": true,
+          "auth_seen": true,
+          "auth_after_tls": true
+        },
+        "server_error": null,
+        "client_result": {
+          "greeting": "+OK SecureMailScope mock POP3 ready",
+          "capa": [
+            "+OK Capability list follows",
+            "USER",
+            "STLS",
+            "."
+          ],
+          "stls_response": "+OK Begin TLS negotiation now",
+          "client_version": "TLSv1.2",
+          "client_cipher": "ECDHE-RSA-AES128-GCM-SHA256",
+          "user_response": "+OK user accepted",
+          "pass_response": "+OK mailbox ready",
+          "stat_response": "+OK 1 512",
+          "quit_response": "+OK bye"
+        },
+        "client_error": null
+      }
+    },
+    {
+      "group": "singles",
+      "name": "pop3-110-stls-cbc",
+      "file": "testset/captures/pop3-110-stls-cbc.pcapng",
+      "bytes": 7400,
+      "sessions": [
+        {
+          "protocol": "POP3",
+          "server_port": 110,
+          "mode": "pop3_stls",
+          "profile": "cbc-only",
+          "implicit_tls": false,
+          "expect_findings": [
+            "LEGACY_CBC_CIPHER"
+          ],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "DEPRECATED_TLS_VERSION",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": null,
+          "class_band": [
+            "MEDIUM",
+            "HIGH"
+          ],
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": true
+          },
+          "client_port": 35410,
+          "rounds": 1
+        }
+      ],
+      "capture_result": {
+        "scenario": "pop3-110-stls-cbc",
+        "capture": "testset/captures/pop3-110-stls-cbc.pcapng",
+        "bytes": 7400,
+        "payload_packets": 17,
+        "server_result": {
+          "client_port": 35410,
+          "negotiated_version": "TLSv1.2",
+          "negotiated_cipher": "ECDHE-RSA-AES128-SHA",
+          "starttls_upgraded": true,
+          "auth_seen": true,
+          "auth_after_tls": true
+        },
+        "server_error": null,
+        "client_result": {
+          "greeting": "+OK SecureMailScope mock POP3 ready",
+          "capa": [
+            "+OK Capability list follows",
+            "USER",
+            "STLS",
+            "."
+          ],
+          "stls_response": "+OK Begin TLS negotiation now",
+          "client_version": "TLSv1.2",
+          "client_cipher": "ECDHE-RSA-AES128-SHA",
+          "user_response": "+OK user accepted",
+          "pass_response": "+OK mailbox ready",
+          "stat_response": "+OK 1 512",
+          "quit_response": "+OK bye"
+        },
+        "client_error": null
+      }
+    },
+    {
+      "group": "singles",
+      "name": "pop3-110-stls-static-rsa",
+      "file": "testset/captures/pop3-110-stls-static-rsa.pcapng",
+      "bytes": 7284,
+      "sessions": [
+        {
+          "protocol": "POP3",
+          "server_port": 110,
+          "mode": "pop3_stls",
+          "profile": "static-rsa",
+          "implicit_tls": false,
+          "expect_findings": [
+            "NO_FORWARD_SECRECY"
+          ],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": null,
+          "class_band": [
+            "MEDIUM",
+            "HIGH"
+          ],
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": false
+          },
+          "client_port": 50876,
+          "rounds": 1
+        }
+      ],
+      "capture_result": {
+        "scenario": "pop3-110-stls-static-rsa",
+        "capture": "testset/captures/pop3-110-stls-static-rsa.pcapng",
+        "bytes": 7284,
+        "payload_packets": 17,
+        "server_result": {
+          "client_port": 50876,
+          "negotiated_version": "TLSv1.2",
+          "negotiated_cipher": "AES128-SHA",
+          "starttls_upgraded": true,
+          "auth_seen": true,
+          "auth_after_tls": true
+        },
+        "server_error": null,
+        "client_result": {
+          "greeting": "+OK SecureMailScope mock POP3 ready",
+          "capa": [
+            "+OK Capability list follows",
+            "USER",
+            "STLS",
+            "."
+          ],
+          "stls_response": "+OK Begin TLS negotiation now",
+          "client_version": "TLSv1.2",
+          "client_cipher": "AES128-SHA",
+          "user_response": "+OK user accepted",
+          "pass_response": "+OK mailbox ready",
+          "stat_response": "+OK 1 512",
+          "quit_response": "+OK bye"
+        },
+        "client_error": null
+      }
+    },
+    {
+      "group": "singles",
+      "name": "pop3-110-stls-rejected",
+      "file": "testset/captures/pop3-110-stls-rejected.pcapng",
+      "bytes": 2668,
+      "sessions": [
+        {
+          "protocol": "POP3",
+          "server_port": 110,
+          "mode": "pop3_reject_stls",
+          "profile": null,
+          "implicit_tls": false,
+          "expect_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION"
+          ],
+          "forbid_findings": [
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "NO_FORWARD_SECRECY",
+            "LEGACY_CBC_CIPHER",
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY"
+          ],
+          "class_exact": "CRITICAL",
+          "class_band": null,
+          "facts": {
+            "tls_version": null,
+            "cert_observed": false
+          },
+          "client_port": 50878,
+          "rounds": 1
+        }
+      ],
+      "capture_result": {
+        "scenario": "pop3-110-stls-rejected",
+        "capture": "testset/captures/pop3-110-stls-rejected.pcapng",
+        "bytes": 2668,
+        "payload_packets": 13,
+        "server_result": {
+          "client_port": 50878,
+          "auth_seen": true,
+          "auth_after_tls": false
+        },
+        "server_error": null,
+        "client_result": {
+          "greeting": "+OK SecureMailScope mock POP3 ready",
+          "capa": [
+            "+OK Capability list follows",
+            "USER",
+            "STLS",
+            "."
+          ],
+          "stls_response": "-ERR unknown command",
+          "user_response": "+OK user accepted",
+          "pass_response": "+OK mailbox ready",
+          "stat_response": "+OK 1 512",
+          "quit_response": "+OK bye"
+        },
+        "client_error": null
+      }
+    },
+    {
+      "group": "singles",
+      "name": "pop3-8110-plaintext",
+      "file": "testset/captures/pop3-8110-plaintext.pcapng",
+      "bytes": 2436,
+      "sessions": [
+        {
+          "protocol": "POP3",
+          "server_port": 8110,
+          "mode": "pop3_plaintext",
+          "profile": null,
+          "implicit_tls": false,
+          "expect_findings": [
+            "PLAINTEXT_AUTHENTICATION"
+          ],
+          "forbid_findings": [
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "NO_FORWARD_SECRECY",
+            "LEGACY_CBC_CIPHER",
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY"
+          ],
+          "class_exact": "CRITICAL",
+          "class_band": null,
+          "facts": {
+            "tls_version": null,
+            "cert_observed": false
+          },
+          "client_port": 34038,
+          "rounds": 1
+        }
+      ],
+      "capture_result": {
+        "scenario": "pop3-8110-plaintext",
+        "capture": "testset/captures/pop3-8110-plaintext.pcapng",
+        "bytes": 2436,
+        "payload_packets": 11,
+        "server_result": {
+          "client_port": 34038,
+          "auth_seen": true,
+          "auth_after_tls": false
+        },
+        "server_error": null,
+        "client_result": {
+          "greeting": "+OK SecureMailScope mock POP3 ready",
+          "capa": [
+            "+OK Capability list follows",
+            "USER",
+            "."
+          ],
+          "user_response": "+OK user accepted",
+          "pass_response": "+OK mailbox ready",
+          "stat_response": "+OK 1 512",
+          "quit_response": "+OK bye"
+        },
+        "client_error": null
+      }
+    },
+    {
+      "group": "singles",
+      "name": "smtps-465-implicit-modern",
+      "file": "testset/captures/smtps-465-implicit-modern.pcapng",
+      "bytes": 6724,
+      "sessions": [
+        {
+          "protocol": "SMTP",
+          "server_port": 465,
+          "mode": "implicit_tls",
+          "profile": "modern",
+          "implicit_tls": true,
+          "expect_findings": [],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "STARTTLS_UPGRADE_NOT_COMPLETED",
+            "PLAINTEXT_AUTHENTICATION",
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "NO_FORWARD_SECRECY",
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": "LOW",
+          "class_band": null,
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": true
+          },
+          "client_port": 58872,
+          "rounds": 1
+        }
+      ],
+      "capture_result": {
+        "scenario": "smtps-465-implicit-modern",
+        "capture": "testset/captures/smtps-465-implicit-modern.pcapng",
+        "bytes": 6724,
+        "payload_packets": 11,
+        "server_result": {
+          "client_port": 58872,
+          "negotiated_version": "TLSv1.2",
+          "negotiated_cipher": "ECDHE-RSA-AES128-GCM-SHA256",
+          "implicit_tls": true,
+          "auth_seen": true,
+          "auth_after_tls": true,
+          "starttls_upgraded": true
+        },
+        "server_error": null,
+        "client_result": {
+          "client_version": "TLSv1.2",
+          "client_cipher": "ECDHE-RSA-AES128-GCM-SHA256",
+          "greeting": "220 lab.lab.test ESMTP SecureMailScope mock",
+          "ehlo": [
+            "250-lab.lab.test",
+            "250 AUTH PLAIN LOGIN"
+          ],
+          "starttls_response": "not attempted - no cleartext upgrade step",
+          "auth_response": "235 2.7.0 Authentication successful",
+          "quit_response": "221 2.0.0 Bye"
+        },
+        "client_error": null
+      }
+    },
+    {
+      "group": "singles",
+      "name": "imaps-993-implicit-legacy-tls10",
+      "file": "testset/captures/imaps-993-implicit-legacy-tls10.pcapng",
+      "bytes": 9408,
+      "sessions": [
+        {
+          "protocol": "IMAP",
+          "server_port": 993,
+          "mode": "implicit_tls",
+          "profile": "legacy-tls10",
+          "implicit_tls": true,
+          "expect_findings": [
+            "DEPRECATED_TLS_VERSION",
+            "NO_FORWARD_SECRECY"
+          ],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "STARTTLS_UPGRADE_NOT_COMPLETED",
+            "PLAINTEXT_AUTHENTICATION",
+            "INSECURE_CIPHER",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": null,
+          "class_band": [
+            "HIGH",
+            "CRITICAL"
+          ],
+          "facts": {
+            "tls_version": "TLS 1.0",
+            "cert_observed": true,
+            "forward_secrecy": false
+          },
+          "client_port": 58356,
+          "rounds": 1
+        }
+      ],
+      "capture_result": {
+        "scenario": "imaps-993-implicit-legacy-tls10",
+        "capture": "testset/captures/imaps-993-implicit-legacy-tls10.pcapng",
+        "bytes": 9408,
+        "payload_packets": 21,
+        "server_result": {
+          "client_port": 58356,
+          "negotiated_version": "TLSv1",
+          "negotiated_cipher": "AES128-SHA",
+          "implicit_tls": true,
+          "auth_seen": true,
+          "auth_after_tls": true,
+          "starttls_upgraded": true
+        },
+        "server_error": null,
+        "client_result": {
+          "client_version": "TLSv1",
+          "client_cipher": "AES128-SHA",
+          "greeting": "* OK [CAPABILITY IMAP4rev1 AUTH=PLAIN] SecureMailScope mock ready",
+          "capability": "b1 OK [CAPABILITY IMAP4rev1 AUTH=PLAIN] capabilities listed",
+          "login_response": "b2 OK LOGIN completed",
+          "select_response": "b3 OK completed",
+          "logout_response": "* BYE logging out"
+        },
+        "client_error": null
+      }
+    },
+    {
+      "group": "singles",
+      "name": "pop3s-995-implicit-weak-cert",
+      "file": "testset/captures/pop3s-995-implicit-weak-cert.pcapng",
+      "bytes": 6944,
+      "sessions": [
+        {
+          "protocol": "POP3",
+          "server_port": 995,
+          "mode": "implicit_tls",
+          "profile": "weak-cert",
+          "implicit_tls": true,
+          "expect_findings": [
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY",
+            "CERTIFICATE_HOSTNAME_MISMATCH"
+          ],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "STARTTLS_UPGRADE_NOT_COMPLETED",
+            "PLAINTEXT_AUTHENTICATION",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": null,
+          "class_band": [
+            "HIGH",
+            "CRITICAL"
+          ],
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": true
+          },
+          "client_port": 58430,
+          "rounds": 1
+        }
+      ],
+      "capture_result": {
+        "scenario": "pop3s-995-implicit-weak-cert",
+        "capture": "testset/captures/pop3s-995-implicit-weak-cert.pcapng",
+        "bytes": 6944,
+        "payload_packets": 15,
+        "server_result": {
+          "client_port": 58430,
+          "negotiated_version": "TLSv1.2",
+          "negotiated_cipher": "ECDHE-RSA-AES128-GCM-SHA256",
+          "implicit_tls": true,
+          "auth_seen": true,
+          "auth_after_tls": true
+        },
+        "server_error": null,
+        "client_result": {
+          "client_version": "TLSv1.2",
+          "client_cipher": "ECDHE-RSA-AES128-GCM-SHA256",
+          "greeting": "+OK SecureMailScope mock POP3 ready",
+          "capa": [
+            "+OK Capability list follows",
+            "USER",
+            "."
+          ],
+          "user_response": "+OK user accepted",
+          "pass_response": "+OK mailbox ready",
+          "stat_response": "+OK 1 512",
+          "quit_response": "+OK bye"
+        },
+        "client_error": null
+      }
+    },
+    {
+      "group": "field",
+      "name": "field-mixed-1",
+      "file": "testset/field/field-mixed-1.pcapng",
+      "bytes": 159736,
+      "sessions": [
+        {
+          "protocol": "SMTP",
+          "server_port": 465,
+          "mode": "implicit_tls",
+          "profile": "modern",
+          "implicit_tls": true,
+          "expect_findings": [],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "STARTTLS_UPGRADE_NOT_COMPLETED",
+            "PLAINTEXT_AUTHENTICATION",
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "NO_FORWARD_SECRECY",
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": "LOW",
+          "class_band": null,
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": true
+          },
+          "client_port": 59320,
+          "rounds": 1
+        },
+        {
+          "protocol": "IMAP",
+          "server_port": 993,
+          "mode": "implicit_tls",
+          "profile": "modern",
+          "implicit_tls": true,
+          "expect_findings": [],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "STARTTLS_UPGRADE_NOT_COMPLETED",
+            "PLAINTEXT_AUTHENTICATION",
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "NO_FORWARD_SECRECY",
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": "LOW",
+          "class_band": null,
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": true
+          },
+          "client_port": 40524,
+          "rounds": 1
+        },
+        {
+          "protocol": "POP3",
+          "server_port": 995,
+          "mode": "implicit_tls",
+          "profile": "modern",
+          "implicit_tls": true,
+          "expect_findings": [],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "STARTTLS_UPGRADE_NOT_COMPLETED",
+            "PLAINTEXT_AUTHENTICATION",
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "NO_FORWARD_SECRECY",
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": "LOW",
+          "class_band": null,
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": true
+          },
+          "client_port": 58436,
+          "rounds": 1
+        },
+        {
+          "protocol": "SMTP",
+          "server_port": 587,
+          "mode": "smtp_secure",
+          "profile": "modern",
+          "implicit_tls": false,
+          "expect_findings": [],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "NO_FORWARD_SECRECY",
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": "LOW",
+          "class_band": null,
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": true
+          },
+          "client_port": 33916,
+          "rounds": 1
+        },
+        {
+          "protocol": "IMAP",
+          "server_port": 143,
+          "mode": "imap_starttls",
+          "profile": "modern",
+          "implicit_tls": false,
+          "expect_findings": [],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "NO_FORWARD_SECRECY",
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": "LOW",
+          "class_band": null,
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": true
+          },
+          "client_port": 34308,
+          "rounds": 1
+        },
+        {
+          "protocol": "POP3",
+          "server_port": 110,
+          "mode": "pop3_stls",
+          "profile": "modern",
+          "implicit_tls": false,
+          "expect_findings": [],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "NO_FORWARD_SECRECY",
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": "LOW",
+          "class_band": null,
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": true
+          },
+          "client_port": 47462,
+          "rounds": 1
+        },
+        {
+          "protocol": "SMTP",
+          "server_port": 465,
+          "mode": "implicit_tls",
+          "profile": "modern-tls13",
+          "implicit_tls": true,
+          "expect_findings": [
+            "CERTIFICATE_NOT_OBSERVED"
+          ],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "STARTTLS_UPGRADE_NOT_COMPLETED",
+            "PLAINTEXT_AUTHENTICATION",
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "CERTIFICATE_EXPIRED"
+          ],
+          "class_exact": "LOW",
+          "class_band": null,
+          "facts": {
+            "tls_version": "TLS 1.3",
+            "cert_observed": false,
+            "forward_secrecy": true
+          },
+          "client_port": 59330,
+          "rounds": 1
+        },
+        {
+          "protocol": "IMAP",
+          "server_port": 993,
+          "mode": "implicit_tls",
+          "profile": "modern-tls13",
+          "implicit_tls": true,
+          "expect_findings": [
+            "CERTIFICATE_NOT_OBSERVED"
+          ],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "STARTTLS_UPGRADE_NOT_COMPLETED",
+            "PLAINTEXT_AUTHENTICATION",
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "CERTIFICATE_EXPIRED"
+          ],
+          "class_exact": "LOW",
+          "class_band": null,
+          "facts": {
+            "tls_version": "TLS 1.3",
+            "cert_observed": false,
+            "forward_secrecy": true
+          },
+          "client_port": 40540,
+          "rounds": 1
+        },
+        {
+          "protocol": "SMTP",
+          "server_port": 587,
+          "mode": "smtp_secure",
+          "profile": "legacy-tls10",
+          "implicit_tls": false,
+          "expect_findings": [
+            "DEPRECATED_TLS_VERSION",
+            "NO_FORWARD_SECRECY"
+          ],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "INSECURE_CIPHER",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": null,
+          "class_band": [
+            "HIGH",
+            "CRITICAL"
+          ],
+          "facts": {
+            "tls_version": "TLS 1.0",
+            "cert_observed": true,
+            "forward_secrecy": false
+          },
+          "client_port": 33918,
+          "rounds": 1
+        },
+        {
+          "protocol": "SMTP",
+          "server_port": 587,
+          "mode": "smtp_secure",
+          "profile": "cbc-only",
+          "implicit_tls": false,
+          "expect_findings": [
+            "LEGACY_CBC_CIPHER"
+          ],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "DEPRECATED_TLS_VERSION",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": null,
+          "class_band": [
+            "MEDIUM",
+            "HIGH"
+          ],
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": true
+          },
+          "client_port": 33924,
+          "rounds": 1
+        },
+        {
+          "protocol": "SMTP",
+          "server_port": 587,
+          "mode": "smtp_secure",
+          "profile": "static-rsa",
+          "implicit_tls": false,
+          "expect_findings": [
+            "NO_FORWARD_SECRECY"
+          ],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": null,
+          "class_band": [
+            "MEDIUM",
+            "HIGH"
+          ],
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": false
+          },
+          "client_port": 33930,
+          "rounds": 1
+        },
+        {
+          "protocol": "SMTP",
+          "server_port": 587,
+          "mode": "smtp_secure",
+          "profile": "weak-cert",
+          "implicit_tls": false,
+          "expect_findings": [
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY",
+            "CERTIFICATE_HOSTNAME_MISMATCH"
+          ],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": null,
+          "class_band": [
+            "HIGH",
+            "CRITICAL"
+          ],
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": true
+          },
+          "client_port": 33942,
+          "rounds": 1
+        },
+        {
+          "protocol": "IMAP",
+          "server_port": 143,
+          "mode": "imap_starttls",
+          "profile": "legacy-tls10",
+          "implicit_tls": false,
+          "expect_findings": [
+            "DEPRECATED_TLS_VERSION",
+            "NO_FORWARD_SECRECY"
+          ],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "INSECURE_CIPHER",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": null,
+          "class_band": [
+            "HIGH",
+            "CRITICAL"
+          ],
+          "facts": {
+            "tls_version": "TLS 1.0",
+            "cert_observed": true,
+            "forward_secrecy": false
+          },
+          "client_port": 34322,
+          "rounds": 1
+        },
+        {
+          "protocol": "IMAP",
+          "server_port": 143,
+          "mode": "imap_starttls",
+          "profile": "cbc-only",
+          "implicit_tls": false,
+          "expect_findings": [
+            "LEGACY_CBC_CIPHER"
+          ],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "DEPRECATED_TLS_VERSION",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": null,
+          "class_band": [
+            "MEDIUM",
+            "HIGH"
+          ],
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": true
+          },
+          "client_port": 34334,
+          "rounds": 1
+        },
+        {
+          "protocol": "IMAP",
+          "server_port": 143,
+          "mode": "imap_starttls",
+          "profile": "weak-cert",
+          "implicit_tls": false,
+          "expect_findings": [
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY",
+            "CERTIFICATE_HOSTNAME_MISMATCH"
+          ],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": null,
+          "class_band": [
+            "HIGH",
+            "CRITICAL"
+          ],
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": true
+          },
+          "client_port": 34336,
+          "rounds": 1
+        },
+        {
+          "protocol": "IMAP",
+          "server_port": 143,
+          "mode": "imap_starttls",
+          "profile": "null-cipher",
+          "implicit_tls": false,
+          "expect_findings": [
+            "INSECURE_CIPHER"
+          ],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": null,
+          "class_band": [
+            "HIGH",
+            "CRITICAL"
+          ],
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true
+          },
+          "client_port": 34348,
+          "rounds": 1
+        },
+        {
+          "protocol": "POP3",
+          "server_port": 110,
+          "mode": "pop3_stls",
+          "profile": "legacy-tls10",
+          "implicit_tls": false,
+          "expect_findings": [
+            "DEPRECATED_TLS_VERSION",
+            "NO_FORWARD_SECRECY"
+          ],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "INSECURE_CIPHER",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": null,
+          "class_band": [
+            "HIGH",
+            "CRITICAL"
+          ],
+          "facts": {
+            "tls_version": "TLS 1.0",
+            "cert_observed": true,
+            "forward_secrecy": false
+          },
+          "client_port": 47468,
+          "rounds": 1
+        },
+        {
+          "protocol": "POP3",
+          "server_port": 110,
+          "mode": "pop3_stls",
+          "profile": "cbc-only",
+          "implicit_tls": false,
+          "expect_findings": [
+            "LEGACY_CBC_CIPHER"
+          ],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "DEPRECATED_TLS_VERSION",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": null,
+          "class_band": [
+            "MEDIUM",
+            "HIGH"
+          ],
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": true
+          },
+          "client_port": 47476,
+          "rounds": 1
+        },
+        {
+          "protocol": "POP3",
+          "server_port": 110,
+          "mode": "pop3_stls",
+          "profile": "static-rsa",
+          "implicit_tls": false,
+          "expect_findings": [
+            "NO_FORWARD_SECRECY"
+          ],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": null,
+          "class_band": [
+            "MEDIUM",
+            "HIGH"
+          ],
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": false
+          },
+          "client_port": 47492,
+          "rounds": 1
+        },
+        {
+          "protocol": "POP3",
+          "server_port": 110,
+          "mode": "pop3_stls",
+          "profile": "weak-cert",
+          "implicit_tls": false,
+          "expect_findings": [
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY",
+            "CERTIFICATE_HOSTNAME_MISMATCH"
+          ],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": null,
+          "class_band": [
+            "HIGH",
+            "CRITICAL"
+          ],
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": true
+          },
+          "client_port": 47508,
+          "rounds": 1
+        },
+        {
+          "protocol": "SMTP",
+          "server_port": 587,
+          "mode": "smtp_reject_starttls",
+          "profile": null,
+          "implicit_tls": false,
+          "expect_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION"
+          ],
+          "forbid_findings": [
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "NO_FORWARD_SECRECY",
+            "LEGACY_CBC_CIPHER",
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY"
+          ],
+          "class_exact": "CRITICAL",
+          "class_band": null,
+          "facts": {
+            "tls_version": null,
+            "cert_observed": false
+          },
+          "client_port": 33944,
+          "rounds": 1
+        },
+        {
+          "protocol": "IMAP",
+          "server_port": 143,
+          "mode": "imap_reject_starttls",
+          "profile": null,
+          "implicit_tls": false,
+          "expect_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION"
+          ],
+          "forbid_findings": [
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "NO_FORWARD_SECRECY",
+            "LEGACY_CBC_CIPHER",
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY"
+          ],
+          "class_exact": "CRITICAL",
+          "class_band": null,
+          "facts": {
+            "tls_version": null,
+            "cert_observed": false
+          },
+          "client_port": 34352,
+          "rounds": 1
+        },
+        {
+          "protocol": "POP3",
+          "server_port": 110,
+          "mode": "pop3_reject_stls",
+          "profile": null,
+          "implicit_tls": false,
+          "expect_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION"
+          ],
+          "forbid_findings": [
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "NO_FORWARD_SECRECY",
+            "LEGACY_CBC_CIPHER",
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY"
+          ],
+          "class_exact": "CRITICAL",
+          "class_band": null,
+          "facts": {
+            "tls_version": null,
+            "cert_observed": false
+          },
+          "client_port": 47510,
+          "rounds": 1
+        },
+        {
+          "protocol": "SMTP",
+          "server_port": 587,
+          "mode": "smtp_no_starttls",
+          "profile": null,
+          "implicit_tls": false,
+          "expect_findings": [
+            "PLAINTEXT_AUTHENTICATION"
+          ],
+          "forbid_findings": [
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "NO_FORWARD_SECRECY",
+            "LEGACY_CBC_CIPHER",
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY"
+          ],
+          "class_exact": "CRITICAL",
+          "class_band": null,
+          "facts": {
+            "tls_version": null,
+            "cert_observed": false
+          },
+          "client_port": 33950,
+          "rounds": 1
+        },
+        {
+          "protocol": "POP3",
+          "server_port": 110,
+          "mode": "pop3_plaintext",
+          "profile": null,
+          "implicit_tls": false,
+          "expect_findings": [
+            "PLAINTEXT_AUTHENTICATION"
+          ],
+          "forbid_findings": [
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "NO_FORWARD_SECRECY",
+            "LEGACY_CBC_CIPHER",
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY"
+          ],
+          "class_exact": "CRITICAL",
+          "class_band": null,
+          "facts": {
+            "tls_version": null,
+            "cert_observed": false
+          },
+          "client_port": 47526,
+          "rounds": 1
+        },
+        {
+          "protocol": "IMAP",
+          "server_port": 143,
+          "mode": "imap_cleartext_login",
+          "profile": "modern",
+          "implicit_tls": false,
+          "expect_findings": [
+            "PLAINTEXT_AUTHENTICATION"
+          ],
+          "forbid_findings": [
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "NO_FORWARD_SECRECY",
+            "LEGACY_CBC_CIPHER",
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": "CRITICAL",
+          "class_band": null,
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": true
+          },
+          "client_port": 34362,
+          "rounds": 1
+        }
+      ],
+      "failures": []
+    },
+    {
+      "group": "field",
+      "name": "field-mixed-2",
+      "file": "testset/field/field-mixed-2.pcapng",
+      "bytes": 159648,
+      "sessions": [
+        {
+          "protocol": "SMTP",
+          "server_port": 465,
+          "mode": "implicit_tls",
+          "profile": "modern",
+          "implicit_tls": true,
+          "expect_findings": [],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "STARTTLS_UPGRADE_NOT_COMPLETED",
+            "PLAINTEXT_AUTHENTICATION",
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "NO_FORWARD_SECRECY",
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": "LOW",
+          "class_band": null,
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": true
+          },
+          "client_port": 59332,
+          "rounds": 1
+        },
+        {
+          "protocol": "IMAP",
+          "server_port": 993,
+          "mode": "implicit_tls",
+          "profile": "modern",
+          "implicit_tls": true,
+          "expect_findings": [],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "STARTTLS_UPGRADE_NOT_COMPLETED",
+            "PLAINTEXT_AUTHENTICATION",
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "NO_FORWARD_SECRECY",
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": "LOW",
+          "class_band": null,
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": true
+          },
+          "client_port": 40542,
+          "rounds": 1
+        },
+        {
+          "protocol": "POP3",
+          "server_port": 995,
+          "mode": "implicit_tls",
+          "profile": "modern",
+          "implicit_tls": true,
+          "expect_findings": [],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "STARTTLS_UPGRADE_NOT_COMPLETED",
+            "PLAINTEXT_AUTHENTICATION",
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "NO_FORWARD_SECRECY",
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": "LOW",
+          "class_band": null,
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": true
+          },
+          "client_port": 58444,
+          "rounds": 1
+        },
+        {
+          "protocol": "SMTP",
+          "server_port": 2525,
+          "mode": "smtp_secure",
+          "profile": "modern",
+          "implicit_tls": false,
+          "expect_findings": [],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "NO_FORWARD_SECRECY",
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": "LOW",
+          "class_band": null,
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": true
+          },
+          "client_port": 34732,
+          "rounds": 1
+        },
+        {
+          "protocol": "IMAP",
+          "server_port": 8143,
+          "mode": "imap_starttls",
+          "profile": "modern",
+          "implicit_tls": false,
+          "expect_findings": [],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "NO_FORWARD_SECRECY",
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": "LOW",
+          "class_band": null,
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": true
+          },
+          "client_port": 52214,
+          "rounds": 1
+        },
+        {
+          "protocol": "POP3",
+          "server_port": 8110,
+          "mode": "pop3_stls",
+          "profile": "modern",
+          "implicit_tls": false,
+          "expect_findings": [],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "NO_FORWARD_SECRECY",
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": "LOW",
+          "class_band": null,
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": true
+          },
+          "client_port": 44768,
+          "rounds": 1
+        },
+        {
+          "protocol": "SMTP",
+          "server_port": 465,
+          "mode": "implicit_tls",
+          "profile": "modern-tls13",
+          "implicit_tls": true,
+          "expect_findings": [
+            "CERTIFICATE_NOT_OBSERVED"
+          ],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "STARTTLS_UPGRADE_NOT_COMPLETED",
+            "PLAINTEXT_AUTHENTICATION",
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "CERTIFICATE_EXPIRED"
+          ],
+          "class_exact": "LOW",
+          "class_band": null,
+          "facts": {
+            "tls_version": "TLS 1.3",
+            "cert_observed": false,
+            "forward_secrecy": true
+          },
+          "client_port": 59336,
+          "rounds": 1
+        },
+        {
+          "protocol": "IMAP",
+          "server_port": 993,
+          "mode": "implicit_tls",
+          "profile": "modern-tls13",
+          "implicit_tls": true,
+          "expect_findings": [
+            "CERTIFICATE_NOT_OBSERVED"
+          ],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "STARTTLS_UPGRADE_NOT_COMPLETED",
+            "PLAINTEXT_AUTHENTICATION",
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "CERTIFICATE_EXPIRED"
+          ],
+          "class_exact": "LOW",
+          "class_band": null,
+          "facts": {
+            "tls_version": "TLS 1.3",
+            "cert_observed": false,
+            "forward_secrecy": true
+          },
+          "client_port": 40554,
+          "rounds": 1
+        },
+        {
+          "protocol": "SMTP",
+          "server_port": 2525,
+          "mode": "smtp_secure",
+          "profile": "legacy-tls10",
+          "implicit_tls": false,
+          "expect_findings": [
+            "DEPRECATED_TLS_VERSION",
+            "NO_FORWARD_SECRECY"
+          ],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "INSECURE_CIPHER",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": null,
+          "class_band": [
+            "HIGH",
+            "CRITICAL"
+          ],
+          "facts": {
+            "tls_version": "TLS 1.0",
+            "cert_observed": true,
+            "forward_secrecy": false
+          },
+          "client_port": 34734,
+          "rounds": 1
+        },
+        {
+          "protocol": "SMTP",
+          "server_port": 2525,
+          "mode": "smtp_secure",
+          "profile": "cbc-only",
+          "implicit_tls": false,
+          "expect_findings": [
+            "LEGACY_CBC_CIPHER"
+          ],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "DEPRECATED_TLS_VERSION",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": null,
+          "class_band": [
+            "MEDIUM",
+            "HIGH"
+          ],
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": true
+          },
+          "client_port": 34748,
+          "rounds": 1
+        },
+        {
+          "protocol": "SMTP",
+          "server_port": 2525,
+          "mode": "smtp_secure",
+          "profile": "static-rsa",
+          "implicit_tls": false,
+          "expect_findings": [
+            "NO_FORWARD_SECRECY"
+          ],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": null,
+          "class_band": [
+            "MEDIUM",
+            "HIGH"
+          ],
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": false
+          },
+          "client_port": 34754,
+          "rounds": 1
+        },
+        {
+          "protocol": "SMTP",
+          "server_port": 2525,
+          "mode": "smtp_secure",
+          "profile": "weak-cert",
+          "implicit_tls": false,
+          "expect_findings": [
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY",
+            "CERTIFICATE_HOSTNAME_MISMATCH"
+          ],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": null,
+          "class_band": [
+            "HIGH",
+            "CRITICAL"
+          ],
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": true
+          },
+          "client_port": 34762,
+          "rounds": 1
+        },
+        {
+          "protocol": "IMAP",
+          "server_port": 8143,
+          "mode": "imap_starttls",
+          "profile": "legacy-tls10",
+          "implicit_tls": false,
+          "expect_findings": [
+            "DEPRECATED_TLS_VERSION",
+            "NO_FORWARD_SECRECY"
+          ],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "INSECURE_CIPHER",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": null,
+          "class_band": [
+            "HIGH",
+            "CRITICAL"
+          ],
+          "facts": {
+            "tls_version": "TLS 1.0",
+            "cert_observed": true,
+            "forward_secrecy": false
+          },
+          "client_port": 52220,
+          "rounds": 1
+        },
+        {
+          "protocol": "IMAP",
+          "server_port": 8143,
+          "mode": "imap_starttls",
+          "profile": "cbc-only",
+          "implicit_tls": false,
+          "expect_findings": [
+            "LEGACY_CBC_CIPHER"
+          ],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "DEPRECATED_TLS_VERSION",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": null,
+          "class_band": [
+            "MEDIUM",
+            "HIGH"
+          ],
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": true
+          },
+          "client_port": 52230,
+          "rounds": 1
+        },
+        {
+          "protocol": "IMAP",
+          "server_port": 8143,
+          "mode": "imap_starttls",
+          "profile": "weak-cert",
+          "implicit_tls": false,
+          "expect_findings": [
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY",
+            "CERTIFICATE_HOSTNAME_MISMATCH"
+          ],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": null,
+          "class_band": [
+            "HIGH",
+            "CRITICAL"
+          ],
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": true
+          },
+          "client_port": 52246,
+          "rounds": 1
+        },
+        {
+          "protocol": "IMAP",
+          "server_port": 8143,
+          "mode": "imap_starttls",
+          "profile": "null-cipher",
+          "implicit_tls": false,
+          "expect_findings": [
+            "INSECURE_CIPHER"
+          ],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": null,
+          "class_band": [
+            "HIGH",
+            "CRITICAL"
+          ],
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true
+          },
+          "client_port": 52260,
+          "rounds": 1
+        },
+        {
+          "protocol": "POP3",
+          "server_port": 8110,
+          "mode": "pop3_stls",
+          "profile": "legacy-tls10",
+          "implicit_tls": false,
+          "expect_findings": [
+            "DEPRECATED_TLS_VERSION",
+            "NO_FORWARD_SECRECY"
+          ],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "INSECURE_CIPHER",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": null,
+          "class_band": [
+            "HIGH",
+            "CRITICAL"
+          ],
+          "facts": {
+            "tls_version": "TLS 1.0",
+            "cert_observed": true,
+            "forward_secrecy": false
+          },
+          "client_port": 44770,
+          "rounds": 1
+        },
+        {
+          "protocol": "POP3",
+          "server_port": 8110,
+          "mode": "pop3_stls",
+          "profile": "cbc-only",
+          "implicit_tls": false,
+          "expect_findings": [
+            "LEGACY_CBC_CIPHER"
+          ],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "DEPRECATED_TLS_VERSION",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": null,
+          "class_band": [
+            "MEDIUM",
+            "HIGH"
+          ],
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": true
+          },
+          "client_port": 44786,
+          "rounds": 1
+        },
+        {
+          "protocol": "POP3",
+          "server_port": 8110,
+          "mode": "pop3_stls",
+          "profile": "static-rsa",
+          "implicit_tls": false,
+          "expect_findings": [
+            "NO_FORWARD_SECRECY"
+          ],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": null,
+          "class_band": [
+            "MEDIUM",
+            "HIGH"
+          ],
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": false
+          },
+          "client_port": 44792,
+          "rounds": 1
+        },
+        {
+          "protocol": "POP3",
+          "server_port": 8110,
+          "mode": "pop3_stls",
+          "profile": "weak-cert",
+          "implicit_tls": false,
+          "expect_findings": [
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY",
+            "CERTIFICATE_HOSTNAME_MISMATCH"
+          ],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": null,
+          "class_band": [
+            "HIGH",
+            "CRITICAL"
+          ],
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": true
+          },
+          "client_port": 44798,
+          "rounds": 1
+        },
+        {
+          "protocol": "SMTP",
+          "server_port": 2525,
+          "mode": "smtp_reject_starttls",
+          "profile": null,
+          "implicit_tls": false,
+          "expect_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION"
+          ],
+          "forbid_findings": [
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "NO_FORWARD_SECRECY",
+            "LEGACY_CBC_CIPHER",
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY"
+          ],
+          "class_exact": "CRITICAL",
+          "class_band": null,
+          "facts": {
+            "tls_version": null,
+            "cert_observed": false
+          },
+          "client_port": 34768,
+          "rounds": 1
+        },
+        {
+          "protocol": "IMAP",
+          "server_port": 8143,
+          "mode": "imap_reject_starttls",
+          "profile": null,
+          "implicit_tls": false,
+          "expect_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION"
+          ],
+          "forbid_findings": [
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "NO_FORWARD_SECRECY",
+            "LEGACY_CBC_CIPHER",
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY"
+          ],
+          "class_exact": "CRITICAL",
+          "class_band": null,
+          "facts": {
+            "tls_version": null,
+            "cert_observed": false
+          },
+          "client_port": 52274,
+          "rounds": 1
+        },
+        {
+          "protocol": "POP3",
+          "server_port": 8110,
+          "mode": "pop3_reject_stls",
+          "profile": null,
+          "implicit_tls": false,
+          "expect_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION"
+          ],
+          "forbid_findings": [
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "NO_FORWARD_SECRECY",
+            "LEGACY_CBC_CIPHER",
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY"
+          ],
+          "class_exact": "CRITICAL",
+          "class_band": null,
+          "facts": {
+            "tls_version": null,
+            "cert_observed": false
+          },
+          "client_port": 44810,
+          "rounds": 1
+        },
+        {
+          "protocol": "SMTP",
+          "server_port": 2525,
+          "mode": "smtp_no_starttls",
+          "profile": null,
+          "implicit_tls": false,
+          "expect_findings": [
+            "PLAINTEXT_AUTHENTICATION"
+          ],
+          "forbid_findings": [
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "NO_FORWARD_SECRECY",
+            "LEGACY_CBC_CIPHER",
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY"
+          ],
+          "class_exact": "CRITICAL",
+          "class_band": null,
+          "facts": {
+            "tls_version": null,
+            "cert_observed": false
+          },
+          "client_port": 34782,
+          "rounds": 1
+        },
+        {
+          "protocol": "POP3",
+          "server_port": 8110,
+          "mode": "pop3_plaintext",
+          "profile": null,
+          "implicit_tls": false,
+          "expect_findings": [
+            "PLAINTEXT_AUTHENTICATION"
+          ],
+          "forbid_findings": [
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "NO_FORWARD_SECRECY",
+            "LEGACY_CBC_CIPHER",
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY"
+          ],
+          "class_exact": "CRITICAL",
+          "class_band": null,
+          "facts": {
+            "tls_version": null,
+            "cert_observed": false
+          },
+          "client_port": 44812,
+          "rounds": 1
+        },
+        {
+          "protocol": "IMAP",
+          "server_port": 8143,
+          "mode": "imap_cleartext_login",
+          "profile": "modern",
+          "implicit_tls": false,
+          "expect_findings": [
+            "PLAINTEXT_AUTHENTICATION"
+          ],
+          "forbid_findings": [
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "NO_FORWARD_SECRECY",
+            "LEGACY_CBC_CIPHER",
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": "CRITICAL",
+          "class_band": null,
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": true
+          },
+          "client_port": 52284,
+          "rounds": 1
+        }
+      ],
+      "failures": []
+    },
+    {
+      "group": "large",
+      "name": "field-large",
+      "file": "testset/large/field-large.pcapng",
+      "bytes": 6375100,
+      "sessions": [
+        {
+          "protocol": "SMTP",
+          "server_port": 465,
+          "mode": "implicit_tls",
+          "profile": "modern",
+          "implicit_tls": true,
+          "expect_findings": [],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "STARTTLS_UPGRADE_NOT_COMPLETED",
+            "PLAINTEXT_AUTHENTICATION",
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "NO_FORWARD_SECRECY",
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": "LOW",
+          "class_band": null,
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": true
+          },
+          "client_port": 59320,
+          "rounds": 40
+        },
+        {
+          "protocol": "IMAP",
+          "server_port": 993,
+          "mode": "implicit_tls",
+          "profile": "modern",
+          "implicit_tls": true,
+          "expect_findings": [],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "STARTTLS_UPGRADE_NOT_COMPLETED",
+            "PLAINTEXT_AUTHENTICATION",
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "NO_FORWARD_SECRECY",
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": "LOW",
+          "class_band": null,
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": true
+          },
+          "client_port": 40524,
+          "rounds": 40
+        },
+        {
+          "protocol": "POP3",
+          "server_port": 995,
+          "mode": "implicit_tls",
+          "profile": "modern",
+          "implicit_tls": true,
+          "expect_findings": [],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "STARTTLS_UPGRADE_NOT_COMPLETED",
+            "PLAINTEXT_AUTHENTICATION",
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "NO_FORWARD_SECRECY",
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": "LOW",
+          "class_band": null,
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": true
+          },
+          "client_port": 58436,
+          "rounds": 40
+        },
+        {
+          "protocol": "SMTP",
+          "server_port": 587,
+          "mode": "smtp_secure",
+          "profile": "modern",
+          "implicit_tls": false,
+          "expect_findings": [],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "NO_FORWARD_SECRECY",
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": "LOW",
+          "class_band": null,
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": true
+          },
+          "client_port": 33916,
+          "rounds": 40
+        },
+        {
+          "protocol": "IMAP",
+          "server_port": 143,
+          "mode": "imap_starttls",
+          "profile": "modern",
+          "implicit_tls": false,
+          "expect_findings": [],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "NO_FORWARD_SECRECY",
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": "LOW",
+          "class_band": null,
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": true
+          },
+          "client_port": 34308,
+          "rounds": 40
+        },
+        {
+          "protocol": "POP3",
+          "server_port": 110,
+          "mode": "pop3_stls",
+          "profile": "modern",
+          "implicit_tls": false,
+          "expect_findings": [],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "NO_FORWARD_SECRECY",
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": "LOW",
+          "class_band": null,
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": true
+          },
+          "client_port": 47462,
+          "rounds": 40
+        },
+        {
+          "protocol": "SMTP",
+          "server_port": 465,
+          "mode": "implicit_tls",
+          "profile": "modern-tls13",
+          "implicit_tls": true,
+          "expect_findings": [
+            "CERTIFICATE_NOT_OBSERVED"
+          ],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "STARTTLS_UPGRADE_NOT_COMPLETED",
+            "PLAINTEXT_AUTHENTICATION",
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "CERTIFICATE_EXPIRED"
+          ],
+          "class_exact": "LOW",
+          "class_band": null,
+          "facts": {
+            "tls_version": "TLS 1.3",
+            "cert_observed": false,
+            "forward_secrecy": true
+          },
+          "client_port": 59330,
+          "rounds": 40
+        },
+        {
+          "protocol": "IMAP",
+          "server_port": 993,
+          "mode": "implicit_tls",
+          "profile": "modern-tls13",
+          "implicit_tls": true,
+          "expect_findings": [
+            "CERTIFICATE_NOT_OBSERVED"
+          ],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "STARTTLS_UPGRADE_NOT_COMPLETED",
+            "PLAINTEXT_AUTHENTICATION",
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "CERTIFICATE_EXPIRED"
+          ],
+          "class_exact": "LOW",
+          "class_band": null,
+          "facts": {
+            "tls_version": "TLS 1.3",
+            "cert_observed": false,
+            "forward_secrecy": true
+          },
+          "client_port": 40540,
+          "rounds": 40
+        },
+        {
+          "protocol": "SMTP",
+          "server_port": 587,
+          "mode": "smtp_secure",
+          "profile": "legacy-tls10",
+          "implicit_tls": false,
+          "expect_findings": [
+            "DEPRECATED_TLS_VERSION",
+            "NO_FORWARD_SECRECY"
+          ],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "INSECURE_CIPHER",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": null,
+          "class_band": [
+            "HIGH",
+            "CRITICAL"
+          ],
+          "facts": {
+            "tls_version": "TLS 1.0",
+            "cert_observed": true,
+            "forward_secrecy": false
+          },
+          "client_port": 33918,
+          "rounds": 40
+        },
+        {
+          "protocol": "SMTP",
+          "server_port": 587,
+          "mode": "smtp_secure",
+          "profile": "cbc-only",
+          "implicit_tls": false,
+          "expect_findings": [
+            "LEGACY_CBC_CIPHER"
+          ],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "DEPRECATED_TLS_VERSION",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": null,
+          "class_band": [
+            "MEDIUM",
+            "HIGH"
+          ],
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": true
+          },
+          "client_port": 33924,
+          "rounds": 40
+        },
+        {
+          "protocol": "SMTP",
+          "server_port": 587,
+          "mode": "smtp_secure",
+          "profile": "static-rsa",
+          "implicit_tls": false,
+          "expect_findings": [
+            "NO_FORWARD_SECRECY"
+          ],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": null,
+          "class_band": [
+            "MEDIUM",
+            "HIGH"
+          ],
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": false
+          },
+          "client_port": 33930,
+          "rounds": 40
+        },
+        {
+          "protocol": "SMTP",
+          "server_port": 587,
+          "mode": "smtp_secure",
+          "profile": "weak-cert",
+          "implicit_tls": false,
+          "expect_findings": [
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY",
+            "CERTIFICATE_HOSTNAME_MISMATCH"
+          ],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": null,
+          "class_band": [
+            "HIGH",
+            "CRITICAL"
+          ],
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": true
+          },
+          "client_port": 33942,
+          "rounds": 40
+        },
+        {
+          "protocol": "IMAP",
+          "server_port": 143,
+          "mode": "imap_starttls",
+          "profile": "legacy-tls10",
+          "implicit_tls": false,
+          "expect_findings": [
+            "DEPRECATED_TLS_VERSION",
+            "NO_FORWARD_SECRECY"
+          ],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "INSECURE_CIPHER",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": null,
+          "class_band": [
+            "HIGH",
+            "CRITICAL"
+          ],
+          "facts": {
+            "tls_version": "TLS 1.0",
+            "cert_observed": true,
+            "forward_secrecy": false
+          },
+          "client_port": 34322,
+          "rounds": 40
+        },
+        {
+          "protocol": "IMAP",
+          "server_port": 143,
+          "mode": "imap_starttls",
+          "profile": "cbc-only",
+          "implicit_tls": false,
+          "expect_findings": [
+            "LEGACY_CBC_CIPHER"
+          ],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "DEPRECATED_TLS_VERSION",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": null,
+          "class_band": [
+            "MEDIUM",
+            "HIGH"
+          ],
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": true
+          },
+          "client_port": 34334,
+          "rounds": 40
+        },
+        {
+          "protocol": "IMAP",
+          "server_port": 143,
+          "mode": "imap_starttls",
+          "profile": "weak-cert",
+          "implicit_tls": false,
+          "expect_findings": [
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY",
+            "CERTIFICATE_HOSTNAME_MISMATCH"
+          ],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": null,
+          "class_band": [
+            "HIGH",
+            "CRITICAL"
+          ],
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": true
+          },
+          "client_port": 34336,
+          "rounds": 40
+        },
+        {
+          "protocol": "IMAP",
+          "server_port": 143,
+          "mode": "imap_starttls",
+          "profile": "null-cipher",
+          "implicit_tls": false,
+          "expect_findings": [
+            "INSECURE_CIPHER"
+          ],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": null,
+          "class_band": [
+            "HIGH",
+            "CRITICAL"
+          ],
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true
+          },
+          "client_port": 34348,
+          "rounds": 40
+        },
+        {
+          "protocol": "POP3",
+          "server_port": 110,
+          "mode": "pop3_stls",
+          "profile": "legacy-tls10",
+          "implicit_tls": false,
+          "expect_findings": [
+            "DEPRECATED_TLS_VERSION",
+            "NO_FORWARD_SECRECY"
+          ],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "INSECURE_CIPHER",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": null,
+          "class_band": [
+            "HIGH",
+            "CRITICAL"
+          ],
+          "facts": {
+            "tls_version": "TLS 1.0",
+            "cert_observed": true,
+            "forward_secrecy": false
+          },
+          "client_port": 47468,
+          "rounds": 40
+        },
+        {
+          "protocol": "POP3",
+          "server_port": 110,
+          "mode": "pop3_stls",
+          "profile": "cbc-only",
+          "implicit_tls": false,
+          "expect_findings": [
+            "LEGACY_CBC_CIPHER"
+          ],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "DEPRECATED_TLS_VERSION",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": null,
+          "class_band": [
+            "MEDIUM",
+            "HIGH"
+          ],
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": true
+          },
+          "client_port": 47476,
+          "rounds": 40
+        },
+        {
+          "protocol": "POP3",
+          "server_port": 110,
+          "mode": "pop3_stls",
+          "profile": "static-rsa",
+          "implicit_tls": false,
+          "expect_findings": [
+            "NO_FORWARD_SECRECY"
+          ],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": null,
+          "class_band": [
+            "MEDIUM",
+            "HIGH"
+          ],
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": false
+          },
+          "client_port": 47492,
+          "rounds": 40
+        },
+        {
+          "protocol": "POP3",
+          "server_port": 110,
+          "mode": "pop3_stls",
+          "profile": "weak-cert",
+          "implicit_tls": false,
+          "expect_findings": [
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY",
+            "CERTIFICATE_HOSTNAME_MISMATCH"
+          ],
+          "forbid_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": null,
+          "class_band": [
+            "HIGH",
+            "CRITICAL"
+          ],
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": true
+          },
+          "client_port": 47508,
+          "rounds": 40
+        },
+        {
+          "protocol": "SMTP",
+          "server_port": 587,
+          "mode": "smtp_reject_starttls",
+          "profile": null,
+          "implicit_tls": false,
+          "expect_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION"
+          ],
+          "forbid_findings": [
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "NO_FORWARD_SECRECY",
+            "LEGACY_CBC_CIPHER",
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY"
+          ],
+          "class_exact": "CRITICAL",
+          "class_band": null,
+          "facts": {
+            "tls_version": null,
+            "cert_observed": false
+          },
+          "client_port": 33944,
+          "rounds": 40
+        },
+        {
+          "protocol": "IMAP",
+          "server_port": 143,
+          "mode": "imap_reject_starttls",
+          "profile": null,
+          "implicit_tls": false,
+          "expect_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION"
+          ],
+          "forbid_findings": [
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "NO_FORWARD_SECRECY",
+            "LEGACY_CBC_CIPHER",
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY"
+          ],
+          "class_exact": "CRITICAL",
+          "class_band": null,
+          "facts": {
+            "tls_version": null,
+            "cert_observed": false
+          },
+          "client_port": 34352,
+          "rounds": 40
+        },
+        {
+          "protocol": "POP3",
+          "server_port": 110,
+          "mode": "pop3_reject_stls",
+          "profile": null,
+          "implicit_tls": false,
+          "expect_findings": [
+            "STARTTLS_REJECTED",
+            "PLAINTEXT_AUTHENTICATION"
+          ],
+          "forbid_findings": [
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "NO_FORWARD_SECRECY",
+            "LEGACY_CBC_CIPHER",
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY"
+          ],
+          "class_exact": "CRITICAL",
+          "class_band": null,
+          "facts": {
+            "tls_version": null,
+            "cert_observed": false
+          },
+          "client_port": 47510,
+          "rounds": 40
+        },
+        {
+          "protocol": "SMTP",
+          "server_port": 587,
+          "mode": "smtp_no_starttls",
+          "profile": null,
+          "implicit_tls": false,
+          "expect_findings": [
+            "PLAINTEXT_AUTHENTICATION"
+          ],
+          "forbid_findings": [
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "NO_FORWARD_SECRECY",
+            "LEGACY_CBC_CIPHER",
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY"
+          ],
+          "class_exact": "CRITICAL",
+          "class_band": null,
+          "facts": {
+            "tls_version": null,
+            "cert_observed": false
+          },
+          "client_port": 33950,
+          "rounds": 40
+        },
+        {
+          "protocol": "POP3",
+          "server_port": 110,
+          "mode": "pop3_plaintext",
+          "profile": null,
+          "implicit_tls": false,
+          "expect_findings": [
+            "PLAINTEXT_AUTHENTICATION"
+          ],
+          "forbid_findings": [
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "NO_FORWARD_SECRECY",
+            "LEGACY_CBC_CIPHER",
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY"
+          ],
+          "class_exact": "CRITICAL",
+          "class_band": null,
+          "facts": {
+            "tls_version": null,
+            "cert_observed": false
+          },
+          "client_port": 47526,
+          "rounds": 40
+        },
+        {
+          "protocol": "IMAP",
+          "server_port": 143,
+          "mode": "imap_cleartext_login",
+          "profile": "modern",
+          "implicit_tls": false,
+          "expect_findings": [
+            "PLAINTEXT_AUTHENTICATION"
+          ],
+          "forbid_findings": [
+            "DEPRECATED_TLS_VERSION",
+            "INSECURE_CIPHER",
+            "NO_FORWARD_SECRECY",
+            "LEGACY_CBC_CIPHER",
+            "CERTIFICATE_EXPIRED",
+            "WEAK_CERTIFICATE_KEY",
+            "PLAINTEXT_EMAIL_SESSION"
+          ],
+          "class_exact": "CRITICAL",
+          "class_band": null,
+          "facts": {
+            "tls_version": "TLS 1.2",
+            "cert_observed": true,
+            "forward_secrecy": true
+          },
+          "client_port": 34362,
+          "rounds": 40
+        }
+      ],
+      "failures": []
+    }
+  ]
+}

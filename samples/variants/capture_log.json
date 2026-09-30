@@ -1,0 +1,241 @@
+[
+  {
+    "scenario": "smtp-starttls-secure-port25",
+    "capture": "samples/variants/smtp-starttls-secure-port25.pcapng",
+    "bytes": 6676,
+    "payload_packets": 14,
+    "server_result": {
+      "negotiated_version": "TLSv1.2",
+      "negotiated_cipher": "ECDHE-RSA-AES128-GCM-SHA256",
+      "auth_seen": true,
+      "auth_after_tls": true
+    },
+    "server_error": null,
+    "client_result": {
+      "greeting": "220 lab.lab.test ESMTP SecureMailScope mock",
+      "ehlo": [
+        "250-lab.lab.test",
+        "250-SIZE 10240000",
+        "250-STARTTLS",
+        "250 AUTH PLAIN LOGIN"
+      ],
+      "starttls_response": "220 2.0.0 Ready to start TLS",
+      "client_version": "TLSv1.2",
+      "client_cipher": "ECDHE-RSA-AES128-GCM-SHA256",
+      "auth_response": "250-SIZE 10240000",
+      "quit_response": "250-STARTTLS"
+    },
+    "client_error": null
+  },
+  {
+    "scenario": "smtp-starttls-secure-port2525",
+    "capture": "samples/variants/smtp-starttls-secure-port2525.pcapng",
+    "bytes": 6936,
+    "payload_packets": 15,
+    "server_result": {
+      "negotiated_version": "TLSv1.2",
+      "negotiated_cipher": "ECDHE-RSA-AES128-GCM-SHA256",
+      "auth_seen": true,
+      "auth_after_tls": true,
+      "starttls_upgraded": true
+    },
+    "server_error": null,
+    "client_result": {
+      "greeting": "220 lab.lab.test ESMTP SecureMailScope mock",
+      "ehlo": [
+        "250-lab.lab.test",
+        "250-SIZE 10240000",
+        "250-STARTTLS",
+        "250 AUTH PLAIN LOGIN"
+      ],
+      "starttls_response": "220 2.0.0 Ready to start TLS",
+      "client_version": "TLSv1.2",
+      "client_cipher": "ECDHE-RSA-AES128-GCM-SHA256",
+      "auth_response": "250-SIZE 10240000",
+      "quit_response": "250-STARTTLS"
+    },
+    "client_error": null
+  },
+  {
+    "scenario": "smtp-starttls-rejected-port25",
+    "capture": "samples/variants/smtp-starttls-rejected-port25.pcapng",
+    "bytes": 2328,
+    "payload_packets": 9,
+    "server_result": {
+      "auth_seen": true,
+      "auth_after_tls": false,
+      "starttls_upgraded": false
+    },
+    "server_error": null,
+    "client_result": {
+      "greeting": "220 lab.lab.test ESMTP SecureMailScope mock",
+      "ehlo": [
+        "250-lab.lab.test",
+        "250-STARTTLS",
+        "250 AUTH PLAIN LOGIN"
+      ],
+      "starttls_response": "454 4.7.0 TLS not available due to temporary reason",
+      "auth_response": "235 2.7.0 Authentication successful",
+      "quit_response": "221 2.0.0 Bye"
+    },
+    "client_error": null
+  },
+  {
+    "scenario": "smtp-starttls-rejected-port2525",
+    "capture": "samples/variants/smtp-starttls-rejected-port2525.pcapng",
+    "bytes": 2332,
+    "payload_packets": 9,
+    "server_result": {
+      "auth_seen": true,
+      "auth_after_tls": false,
+      "starttls_upgraded": false
+    },
+    "server_error": null,
+    "client_result": {
+      "greeting": "220 lab.lab.test ESMTP SecureMailScope mock",
+      "ehlo": [
+        "250-lab.lab.test",
+        "250-STARTTLS",
+        "250 AUTH PLAIN LOGIN"
+      ],
+      "starttls_response": "454 4.7.0 TLS not available due to temporary reason",
+      "auth_response": "235 2.7.0 Authentication successful",
+      "quit_response": "221 2.0.0 Bye"
+    },
+    "client_error": null
+  },
+  {
+    "scenario": "imap-cleartext-login-port8143",
+    "capture": "samples/variants/imap-cleartext-login-port8143.pcapng",
+    "bytes": 6896,
+    "payload_packets": 16,
+    "server_result": {
+      "auth_seen": true,
+      "auth_after_tls": false,
+      "negotiated_version": "TLSv1.2",
+      "negotiated_cipher": "ECDHE-RSA-AES128-GCM-SHA256",
+      "starttls_upgraded": true
+    },
+    "server_error": null,
+    "client_result": {
+      "greeting": "* OK [CAPABILITY IMAP4rev1 IDLE STARTTLS AUTH=PLAIN] SecureMailScope mock ready",
+      "capability": "a1 OK [CAPABILITY IMAP4rev1 IDLE STARTTLS AUTH=PLAIN] capabilities listed",
+      "login_response": "a2 OK LOGIN completed",
+      "starttls_response": "a3 OK Begin TLS negotiation now",
+      "client_version": "TLSv1.2",
+      "client_cipher": "ECDHE-RSA-AES128-GCM-SHA256",
+      "select_response": "a4 OK completed",
+      "logout_response": "* BYE logging out"
+    },
+    "client_error": null
+  },
+  {
+    "scenario": "pop3-cleartext-port8110",
+    "capture": "samples/variants/pop3-cleartext-port8110.pcapng",
+    "bytes": 2436,
+    "payload_packets": 11,
+    "server_result": {
+      "auth_seen": true,
+      "auth_after_tls": false
+    },
+    "server_error": null,
+    "client_result": {
+      "greeting": "+OK SecureMailScope mock POP3 ready",
+      "capa": [
+        "+OK Capability list follows",
+        "USER",
+        "."
+      ],
+      "user_response": "+OK user accepted",
+      "pass_response": "+OK mailbox ready",
+      "stat_response": "+OK 1 512",
+      "quit_response": "+OK bye"
+    },
+    "client_error": null
+  },
+  {
+    "scenario": "imaps-tls10-legacy-port9993",
+    "capture": "samples/variants/imaps-tls10-legacy-port9993.pcapng",
+    "bytes": 5280,
+    "payload_packets": 4,
+    "server_result": {
+      "negotiated_version": "TLSv1",
+      "negotiated_cipher": "AES128-SHA",
+      "implicit_tls": true
+    },
+    "server_error": null,
+    "client_result": {
+      "client_version": "TLSv1",
+      "client_cipher": "AES128-SHA"
+    },
+    "client_error": null
+  },
+  {
+    "scenario": "imaps-null-cipher-port9993",
+    "capture": "samples/variants/imaps-null-cipher-port9993.pcapng",
+    "bytes": 5304,
+    "payload_packets": 4,
+    "server_result": {
+      "negotiated_version": "TLSv1.2",
+      "negotiated_cipher": "NULL-SHA",
+      "implicit_tls": true
+    },
+    "server_error": null,
+    "client_result": {
+      "client_version": "TLSv1.2",
+      "client_cipher": "NULL-SHA"
+    },
+    "client_error": null
+  },
+  {
+    "scenario": "smtps-weak-certificate-port9465",
+    "capture": "samples/variants/smtps-weak-certificate-port9465.pcapng",
+    "bytes": 5140,
+    "payload_packets": 4,
+    "server_result": {
+      "negotiated_version": "TLSv1.2",
+      "negotiated_cipher": "ECDHE-RSA-AES128-GCM-SHA256",
+      "implicit_tls": true
+    },
+    "server_error": null,
+    "client_result": {
+      "client_version": "TLSv1.2",
+      "client_cipher": "ECDHE-RSA-AES128-GCM-SHA256"
+    },
+    "client_error": null
+  },
+  {
+    "scenario": "imaps-tls13-cert-hidden-port9993",
+    "capture": "samples/variants/imaps-tls13-cert-hidden-port9993.pcapng",
+    "bytes": 8076,
+    "payload_packets": 5,
+    "server_result": {
+      "negotiated_version": "TLSv1.3",
+      "negotiated_cipher": "TLS_AES_256_GCM_SHA384",
+      "implicit_tls": true
+    },
+    "server_error": null,
+    "client_result": {
+      "client_version": "TLSv1.3",
+      "client_cipher": "TLS_AES_256_GCM_SHA384"
+    },
+    "client_error": null
+  },
+  {
+    "scenario": "imaps-cbc-cipher-port9993",
+    "capture": "samples/variants/imaps-cbc-cipher-port9993.pcapng",
+    "bytes": 5484,
+    "payload_packets": 4,
+    "server_result": {
+      "negotiated_version": "TLSv1.2",
+      "negotiated_cipher": "ECDHE-RSA-AES128-SHA",
+      "implicit_tls": true
+    },
+    "server_error": null,
+    "client_result": {
+      "client_version": "TLSv1.2",
+      "client_cipher": "ECDHE-RSA-AES128-SHA"
+    },
+    "client_error": null
+  }
+]

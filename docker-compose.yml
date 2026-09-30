@@ -1,0 +1,13 @@
+services:
+  securemailscope-api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      SECUREMAILSCOPE_DATA_DIR: /app/data
+      SECUREMAILSCOPE_MODEL_DIR: /app/models
+      SECUREMAILSCOPE_MAX_UPLOAD_MB: 100
+      SECUREMAILSCOPE_CORS_ORIGINS: http://localhost:5173,http://localhost:3000
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models

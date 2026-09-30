@@ -1,0 +1,17 @@
+{
+  "secure_leaf": {
+    "common_name": "mail.lab.test",
+    "key_bits": 2048,
+    "signature": "sha256",
+    "valid": true,
+    "hostname": "matches"
+  },
+  "weak_leaf": {
+    "common_name": "legacy.mail.test",
+    "key_bits": 1024,
+    "signature": "sha256",
+    "valid": false,
+    "expired_days_ago": 100,
+    "hostname": "mismatch (client requests mail.lab.test)"
+  }
+}

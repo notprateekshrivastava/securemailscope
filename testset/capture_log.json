@@ -1,0 +1,245 @@
+[
+  {
+    "name": "smtp-587-starttls-modern",
+    "file": "testset/captures/smtp-587-starttls-modern.pcapng",
+    "bytes": 6700,
+    "sessions": 1,
+    "rounds": 1,
+    "sessions_total": 1,
+    "failures": []
+  },
+  {
+    "name": "smtp-587-starttls-legacy-tls10",
+    "file": "testset/captures/smtp-587-starttls-legacy-tls10.pcapng",
+    "bytes": 7316,
+    "sessions": 1,
+    "rounds": 1,
+    "sessions_total": 1,
+    "failures": []
+  },
+  {
+    "name": "smtp-587-starttls-weak-cert",
+    "file": "testset/captures/smtp-587-starttls-weak-cert.pcapng",
+    "bytes": 6680,
+    "sessions": 1,
+    "rounds": 1,
+    "sessions_total": 1,
+    "failures": []
+  },
+  {
+    "name": "smtp-587-starttls-cbc",
+    "file": "testset/captures/smtp-587-starttls-cbc.pcapng",
+    "bytes": 6880,
+    "sessions": 1,
+    "rounds": 1,
+    "sessions_total": 1,
+    "failures": []
+  },
+  {
+    "name": "smtp-587-starttls-static-rsa",
+    "file": "testset/captures/smtp-587-starttls-static-rsa.pcapng",
+    "bytes": 6764,
+    "sessions": 1,
+    "rounds": 1,
+    "sessions_total": 1,
+    "failures": []
+  },
+  {
+    "name": "smtp-25-starttls-rejected",
+    "file": "testset/captures/smtp-25-starttls-rejected.pcapng",
+    "bytes": 2328,
+    "sessions": 1,
+    "rounds": 1,
+    "sessions_total": 1,
+    "failures": []
+  },
+  {
+    "name": "smtp-2525-no-starttls",
+    "file": "testset/captures/smtp-2525-no-starttls.pcapng",
+    "bytes": 2060,
+    "sessions": 1,
+    "rounds": 1,
+    "sessions_total": 1,
+    "failures": []
+  },
+  {
+    "name": "imap-143-starttls-modern",
+    "file": "testset/captures/imap-143-starttls-modern.pcapng",
+    "bytes": 6972,
+    "sessions": 1,
+    "rounds": 1,
+    "sessions_total": 1,
+    "failures": []
+  },
+  {
+    "name": "imap-143-starttls-legacy-tls10",
+    "file": "testset/captures/imap-143-starttls-legacy-tls10.pcapng",
+    "bytes": 8672,
+    "sessions": 1,
+    "rounds": 1,
+    "sessions_total": 1,
+    "failures": []
+  },
+  {
+    "name": "imap-143-starttls-weak-cert",
+    "file": "testset/captures/imap-143-starttls-weak-cert.pcapng",
+    "bytes": 6696,
+    "sessions": 1,
+    "rounds": 1,
+    "sessions_total": 1,
+    "failures": []
+  },
+  {
+    "name": "imap-143-starttls-cbc",
+    "file": "testset/captures/imap-143-starttls-cbc.pcapng",
+    "bytes": 7204,
+    "sessions": 1,
+    "rounds": 1,
+    "sessions_total": 1,
+    "failures": []
+  },
+  {
+    "name": "imap-143-starttls-null-cipher",
+    "file": "testset/captures/imap-143-starttls-null-cipher.pcapng",
+    "bytes": 6832,
+    "sessions": 1,
+    "rounds": 1,
+    "sessions_total": 1,
+    "failures": []
+  },
+  {
+    "name": "imap-143-starttls-rejected",
+    "file": "testset/captures/imap-143-starttls-rejected.pcapng",
+    "bytes": 2292,
+    "sessions": 1,
+    "rounds": 1,
+    "sessions_total": 1,
+    "failures": []
+  },
+  {
+    "name": "imap-8143-cleartext-login",
+    "file": "testset/captures/imap-8143-cleartext-login.pcapng",
+    "bytes": 6916,
+    "sessions": 1,
+    "rounds": 1,
+    "sessions_total": 1,
+    "failures": []
+  },
+  {
+    "name": "pop3-110-stls-modern",
+    "file": "testset/captures/pop3-110-stls-modern.pcapng",
+    "bytes": 7172,
+    "sessions": 1,
+    "rounds": 1,
+    "sessions_total": 1,
+    "failures": []
+  },
+  {
+    "name": "pop3-110-stls-legacy-tls10",
+    "file": "testset/captures/pop3-110-stls-legacy-tls10.pcapng",
+    "bytes": 9588,
+    "sessions": 1,
+    "rounds": 1,
+    "sessions_total": 1,
+    "failures": []
+  },
+  {
+    "name": "pop3-110-stls-weak-cert",
+    "file": "testset/captures/pop3-110-stls-weak-cert.pcapng",
+    "bytes": 6896,
+    "sessions": 1,
+    "rounds": 1,
+    "sessions_total": 1,
+    "failures": []
+  },
+  {
+    "name": "pop3-110-stls-cbc",
+    "file": "testset/captures/pop3-110-stls-cbc.pcapng",
+    "bytes": 7400,
+    "sessions": 1,
+    "rounds": 1,
+    "sessions_total": 1,
+    "failures": []
+  },
+  {
+    "name": "pop3-110-stls-static-rsa",
+    "file": "testset/captures/pop3-110-stls-static-rsa.pcapng",
+    "bytes": 7284,
+    "sessions": 1,
+    "rounds": 1,
+    "sessions_total": 1,
+    "failures": []
+  },
+  {
+    "name": "pop3-110-stls-rejected",
+    "file": "testset/captures/pop3-110-stls-rejected.pcapng",
+    "bytes": 2668,
+    "sessions": 1,
+    "rounds": 1,
+    "sessions_total": 1,
+    "failures": []
+  },
+  {
+    "name": "pop3-8110-plaintext",
+    "file": "testset/captures/pop3-8110-plaintext.pcapng",
+    "bytes": 2436,
+    "sessions": 1,
+    "rounds": 1,
+    "sessions_total": 1,
+    "failures": []
+  },
+  {
+    "name": "smtps-465-implicit-modern",
+    "file": "testset/captures/smtps-465-implicit-modern.pcapng",
+    "bytes": 6724,
+    "sessions": 1,
+    "rounds": 1,
+    "sessions_total": 1,
+    "failures": []
+  },
+  {
+    "name": "imaps-993-implicit-legacy-tls10",
+    "file": "testset/captures/imaps-993-implicit-legacy-tls10.pcapng",
+    "bytes": 9408,
+    "sessions": 1,
+    "rounds": 1,
+    "sessions_total": 1,
+    "failures": []
+  },
+  {
+    "name": "pop3s-995-implicit-weak-cert",
+    "file": "testset/captures/pop3s-995-implicit-weak-cert.pcapng",
+    "bytes": 6944,
+    "sessions": 1,
+    "rounds": 1,
+    "sessions_total": 1,
+    "failures": []
+  },
+  {
+    "name": "field-mixed-1",
+    "file": "testset/field/field-mixed-1.pcapng",
+    "bytes": 159736,
+    "sessions": 26,
+    "rounds": 1,
+    "sessions_total": 26,
+    "failures": []
+  },
+  {
+    "name": "field-mixed-2",
+    "file": "testset/field/field-mixed-2.pcapng",
+    "bytes": 159648,
+    "sessions": 26,
+    "rounds": 1,
+    "sessions_total": 26,
+    "failures": []
+  },
+  {
+    "name": "field-large",
+    "file": "testset/large/field-large.pcapng",
+    "bytes": 6375100,
+    "sessions": 26,
+    "rounds": 40,
+    "sessions_total": 1040,
+    "failures": []
+  }
+]

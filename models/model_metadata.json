@@ -1,0 +1,1615 @@
+{
+  "model_version": "synthetic-v2",
+  "feature_ranges": {
+    "server_port": {
+      "min": 25.0,
+      "p01": 25.0,
+      "p50": 110.0,
+      "p99": 993.0,
+      "max": 995.0
+    },
+    "packet_count": {
+      "min": 12.0,
+      "p01": 12.0,
+      "p50": 67.0,
+      "p99": 110.0,
+      "max": 110.0
+    },
+    "byte_count": {
+      "min": 1425.0,
+      "p01": 4561.0,
+      "p50": 51940.0,
+      "p99": 98967.24,
+      "max": 99979.0
+    },
+    "duration_ms": {
+      "min": 1.2024640000000002,
+      "p01": 3.182963,
+      "p50": 4421.183830394328,
+      "p99": 8928.923249497439,
+      "max": 1538646470976.976
+    },
+    "retransmission_rate": {
+      "min": 0.0,
+      "p01": 0.0,
+      "p50": 0.01016714979749914,
+      "p99": 0.28749312888705664,
+      "max": 0.3497819626205197
+    },
+    "handshake_failure_count": {
+      "min": 0.0,
+      "p01": 0.0,
+      "p50": 0.0,
+      "p99": 4.0,
+      "max": 4.0
+    },
+    "tls_detected": {
+      "min": 0.0,
+      "p01": 0.0,
+      "p50": 1.0,
+      "p99": 1.0,
+      "max": 1.0
+    },
+    "tls_version_rank": {
+      "min": 0.0,
+      "p01": 0.0,
+      "p50": 4.0,
+      "p99": 5.0,
+      "max": 5.0
+    },
+    "cipher_strength_score": {
+      "min": 0.0,
+      "p01": 0.0,
+      "p50": 85.0,
+      "p99": 95.0,
+      "max": 95.0
+    },
+    "key_exchange_code": {
+      "min": 0.0,
+      "p01": 0.0,
+      "p50": 2.0,
+      "p99": 4.0,
+      "max": 4.0
+    },
+    "forward_secrecy": {
+      "min": -1.0,
+      "p01": -1.0,
+      "p50": 1.0,
+      "p99": 1.0,
+      "max": 1.0
+    },
+    "starttls_advertised": {
+      "min": 0.0,
+      "p01": 0.0,
+      "p50": 1.0,
+      "p99": 1.0,
+      "max": 1.0
+    },
+    "starttls_success": {
+      "min": 0.0,
+      "p01": 0.0,
+      "p50": 1.0,
+      "p99": 1.0,
+      "max": 1.0
+    },
+    "plaintext_authentication": {
+      "min": 0.0,
+      "p01": 0.0,
+      "p50": 0.0,
+      "p99": 1.0,
+      "max": 1.0
+    },
+    "certificate_present": {
+      "min": 0.0,
+      "p01": 0.0,
+      "p50": 1.0,
+      "p99": 1.0,
+      "max": 1.0
+    },
+    "certificate_expired": {
+      "min": 0.0,
+      "p01": 0.0,
+      "p50": 0.0,
+      "p99": 1.0,
+      "max": 1.0
+    },
+    "certificate_self_signed": {
+      "min": 0.0,
+      "p01": 0.0,
+      "p50": 0.0,
+      "p99": 1.0,
+      "max": 1.0
+    },
+    "certificate_key_bits": {
+      "min": 0.0,
+      "p01": 0.0,
+      "p50": 1024.0,
+      "p99": 3072.0,
+      "max": 3072.0
+    },
+    "certificate_signature_strength": {
+      "min": 0.0,
+      "p01": 0.0,
+      "p50": 3.0,
+      "p99": 3.0,
+      "max": 3.0
+    },
+    "hostname_match": {
+      "min": -1.0,
+      "p01": -1.0,
+      "p50": 1.0,
+      "p99": 1.0,
+      "max": 1.0
+    },
+    "chain_complete": {
+      "min": -1.0,
+      "p01": -1.0,
+      "p50": 1.0,
+      "p99": 1.0,
+      "max": 1.0
+    },
+    "sni_present": {
+      "min": 0.0,
+      "p01": 1.0,
+      "p50": 1.0,
+      "p99": 1.0,
+      "max": 1.0
+    },
+    "handshake_complete": {
+      "min": 0.0,
+      "p01": 0.0,
+      "p50": 1.0,
+      "p99": 1.0,
+      "max": 1.0
+    },
+    "repeated_client_hellos": {
+      "min": 0.0,
+      "p01": 0.0,
+      "p50": 0.0,
+      "p99": 4.0,
+      "max": 4.0
+    },
+    "cipher_rarity": {
+      "min": 0.0,
+      "p01": 0.0,
+      "p50": 0.07739592681230052,
+      "p99": 0.9413992849811027,
+      "max": 0.9996409941290192
+    },
+    "certificate_changed": {
+      "min": 0.0,
+      "p01": 0.0,
+      "p50": 0.0,
+      "p99": 0.0,
+      "max": 0.0
+    }
+  },
+  "feature_ranges_note": "Percentiles of the data the model was trained on. A session with several features outside p01-p99 is unlike the training set, and its ML class should be treated as unvalidated; the rule findings remain the evidence.",
+  "schema_fingerprint": "74a0e52cfce6a64c",
+  "rows": 5000,
+  "seed": 42,
+  "features": [
+    "server_port",
+    "packet_count",
+    "byte_count",
+    "duration_ms",
+    "retransmission_rate",
+    "handshake_failure_count",
+    "tls_detected",
+    "tls_version_rank",
+    "cipher_strength_score",
+    "key_exchange_code",
+    "forward_secrecy",
+    "starttls_advertised",
+    "starttls_success",
+    "plaintext_authentication",
+    "certificate_present",
+    "certificate_expired",
+    "certificate_self_signed",
+    "certificate_key_bits",
+    "certificate_signature_strength",
+    "hostname_match",
+    "chain_complete",
+    "sni_present",
+    "handshake_complete",
+    "repeated_client_hellos",
+    "cipher_rarity",
+    "certificate_changed"
+  ],
+  "classes": [
+    "CRITICAL",
+    "HIGH",
+    "LOW",
+    "MEDIUM"
+  ],
+  "validation_accuracy": 0.982,
+  "validation_scope": "held-out 20% of synthetic rows",
+  "capture_rows": 39,
+  "capture_repeat": 2,
+  "capture_sources": [
+    {
+      "capture": "imap-ssl.pcapng",
+      "sessions": 1,
+      "sessions_in_capture": 1,
+      "rows_capped": false,
+      "protocols": [
+        "IMAP"
+      ],
+      "labels": [
+        "HIGH"
+      ]
+    },
+    {
+      "capture": "pop-ssl.pcapng",
+      "sessions": 1,
+      "sessions_in_capture": 1,
+      "rows_capped": false,
+      "protocols": [
+        "POP3"
+      ],
+      "labels": [
+        "HIGH"
+      ]
+    },
+    {
+      "capture": "smtp-ssl.pcapng",
+      "sessions": 1,
+      "sessions_in_capture": 1,
+      "rows_capped": false,
+      "protocols": [
+        "SMTP"
+      ],
+      "labels": [
+        "HIGH"
+      ]
+    },
+    {
+      "capture": "imap-cleartext-login.pcapng",
+      "sessions": 1,
+      "sessions_in_capture": 1,
+      "rows_capped": false,
+      "protocols": [
+        "IMAP"
+      ],
+      "labels": [
+        "CRITICAL"
+      ]
+    },
+    {
+      "capture": "imaps-cbc-cipher.pcapng",
+      "sessions": 1,
+      "sessions_in_capture": 1,
+      "rows_capped": false,
+      "protocols": [
+        "IMAP"
+      ],
+      "labels": [
+        "MEDIUM"
+      ]
+    },
+    {
+      "capture": "imaps-null-cipher.pcapng",
+      "sessions": 1,
+      "sessions_in_capture": 1,
+      "rows_capped": false,
+      "protocols": [
+        "IMAP"
+      ],
+      "labels": [
+        "CRITICAL"
+      ]
+    },
+    {
+      "capture": "imaps-tls10-legacy.pcapng",
+      "sessions": 1,
+      "sessions_in_capture": 1,
+      "rows_capped": false,
+      "protocols": [
+        "IMAP"
+      ],
+      "labels": [
+        "CRITICAL"
+      ]
+    },
+    {
+      "capture": "imaps-tls13-cert-hidden.pcapng",
+      "sessions": 1,
+      "sessions_in_capture": 1,
+      "rows_capped": false,
+      "protocols": [
+        "IMAP"
+      ],
+      "labels": [
+        "LOW"
+      ]
+    },
+    {
+      "capture": "imaps-weak-certificate.pcapng",
+      "sessions": 1,
+      "sessions_in_capture": 1,
+      "rows_capped": false,
+      "protocols": [
+        "IMAP"
+      ],
+      "labels": [
+        "CRITICAL"
+      ]
+    },
+    {
+      "capture": "pop3-cleartext.pcapng",
+      "sessions": 1,
+      "sessions_in_capture": 1,
+      "rows_capped": false,
+      "protocols": [
+        "POP3"
+      ],
+      "labels": [
+        "CRITICAL"
+      ]
+    },
+    {
+      "capture": "pop3s-cbc-cipher.pcapng",
+      "sessions": 1,
+      "sessions_in_capture": 1,
+      "rows_capped": false,
+      "protocols": [
+        "POP3"
+      ],
+      "labels": [
+        "MEDIUM"
+      ]
+    },
+    {
+      "capture": "pop3s-tls10-legacy.pcapng",
+      "sessions": 1,
+      "sessions_in_capture": 1,
+      "rows_capped": false,
+      "protocols": [
+        "POP3"
+      ],
+      "labels": [
+        "CRITICAL"
+      ]
+    },
+    {
+      "capture": "pop3s-weak-certificate.pcapng",
+      "sessions": 1,
+      "sessions_in_capture": 1,
+      "rows_capped": false,
+      "protocols": [
+        "POP3"
+      ],
+      "labels": [
+        "CRITICAL"
+      ]
+    },
+    {
+      "capture": "smtp-starttls-rejected.pcapng",
+      "sessions": 1,
+      "sessions_in_capture": 1,
+      "rows_capped": false,
+      "protocols": [
+        "SMTP"
+      ],
+      "labels": [
+        "CRITICAL"
+      ]
+    },
+    {
+      "capture": "smtp-starttls-secure.pcapng",
+      "sessions": 1,
+      "sessions_in_capture": 1,
+      "rows_capped": false,
+      "protocols": [
+        "SMTP"
+      ],
+      "labels": [
+        "LOW"
+      ]
+    },
+    {
+      "capture": "smtps-cbc-cipher.pcapng",
+      "sessions": 1,
+      "sessions_in_capture": 1,
+      "rows_capped": false,
+      "protocols": [
+        "SMTP"
+      ],
+      "labels": [
+        "MEDIUM"
+      ]
+    },
+    {
+      "capture": "smtps-tls13-modern.pcapng",
+      "sessions": 1,
+      "sessions_in_capture": 1,
+      "rows_capped": false,
+      "protocols": [
+        "SMTP"
+      ],
+      "labels": [
+        "LOW"
+      ]
+    },
+    {
+      "capture": "smtps-weak-certificate.pcapng",
+      "sessions": 1,
+      "sessions_in_capture": 1,
+      "rows_capped": false,
+      "protocols": [
+        "SMTP"
+      ],
+      "labels": [
+        "CRITICAL"
+      ]
+    },
+    {
+      "capture": "imap-cbc-only-port993.pcapng",
+      "sessions": 1,
+      "sessions_in_capture": 1,
+      "rows_capped": false,
+      "protocols": [
+        "IMAP"
+      ],
+      "labels": [
+        "MEDIUM"
+      ]
+    },
+    {
+      "capture": "imap-cbc-only-port9993.pcapng",
+      "sessions": 0,
+      "sessions_in_capture": 0,
+      "rows_capped": false,
+      "protocols": [],
+      "labels": []
+    },
+    {
+      "capture": "imap-legacy-tls10-port993.pcapng",
+      "sessions": 1,
+      "sessions_in_capture": 1,
+      "rows_capped": false,
+      "protocols": [
+        "IMAP"
+      ],
+      "labels": [
+        "CRITICAL"
+      ]
+    },
+    {
+      "capture": "imap-legacy-tls10-port9993.pcapng",
+      "sessions": 0,
+      "sessions_in_capture": 0,
+      "rows_capped": false,
+      "protocols": [],
+      "labels": []
+    },
+    {
+      "capture": "imap-modern-port993.pcapng",
+      "sessions": 1,
+      "sessions_in_capture": 1,
+      "rows_capped": false,
+      "protocols": [
+        "IMAP"
+      ],
+      "labels": [
+        "LOW"
+      ]
+    },
+    {
+      "capture": "imap-modern-port9993.pcapng",
+      "sessions": 0,
+      "sessions_in_capture": 0,
+      "rows_capped": false,
+      "protocols": [],
+      "labels": []
+    },
+    {
+      "capture": "imap-modern-tls13-port993.pcapng",
+      "sessions": 1,
+      "sessions_in_capture": 1,
+      "rows_capped": false,
+      "protocols": [
+        "IMAP"
+      ],
+      "labels": [
+        "LOW"
+      ]
+    },
+    {
+      "capture": "imap-modern-tls13-port9993.pcapng",
+      "sessions": 0,
+      "sessions_in_capture": 0,
+      "rows_capped": false,
+      "protocols": [],
+      "labels": []
+    },
+    {
+      "capture": "imap-null-cipher-port993.pcapng",
+      "sessions": 1,
+      "sessions_in_capture": 1,
+      "rows_capped": false,
+      "protocols": [
+        "IMAP"
+      ],
+      "labels": [
+        "CRITICAL"
+      ]
+    },
+    {
+      "capture": "imap-null-cipher-port9993.pcapng",
+      "sessions": 0,
+      "sessions_in_capture": 0,
+      "rows_capped": false,
+      "protocols": [],
+      "labels": []
+    },
+    {
+      "capture": "imap-static-rsa-port993.pcapng",
+      "sessions": 1,
+      "sessions_in_capture": 1,
+      "rows_capped": false,
+      "protocols": [
+        "IMAP"
+      ],
+      "labels": [
+        "MEDIUM"
+      ]
+    },
+    {
+      "capture": "imap-static-rsa-port9993.pcapng",
+      "sessions": 0,
+      "sessions_in_capture": 0,
+      "rows_capped": false,
+      "protocols": [],
+      "labels": []
+    },
+    {
+      "capture": "imap-weak-cert-port993.pcapng",
+      "sessions": 1,
+      "sessions_in_capture": 1,
+      "rows_capped": false,
+      "protocols": [
+        "IMAP"
+      ],
+      "labels": [
+        "CRITICAL"
+      ]
+    },
+    {
+      "capture": "imap-weak-cert-port9993.pcapng",
+      "sessions": 0,
+      "sessions_in_capture": 0,
+      "rows_capped": false,
+      "protocols": [],
+      "labels": []
+    },
+    {
+      "capture": "pop3-cbc-only-port995.pcapng",
+      "sessions": 1,
+      "sessions_in_capture": 1,
+      "rows_capped": false,
+      "protocols": [
+        "POP3"
+      ],
+      "labels": [
+        "MEDIUM"
+      ]
+    },
+    {
+      "capture": "pop3-cbc-only-port9995.pcapng",
+      "sessions": 0,
+      "sessions_in_capture": 0,
+      "rows_capped": false,
+      "protocols": [],
+      "labels": []
+    },
+    {
+      "capture": "pop3-legacy-tls10-port995.pcapng",
+      "sessions": 1,
+      "sessions_in_capture": 1,
+      "rows_capped": false,
+      "protocols": [
+        "POP3"
+      ],
+      "labels": [
+        "CRITICAL"
+      ]
+    },
+    {
+      "capture": "pop3-legacy-tls10-port9995.pcapng",
+      "sessions": 0,
+      "sessions_in_capture": 0,
+      "rows_capped": false,
+      "protocols": [],
+      "labels": []
+    },
+    {
+      "capture": "pop3-modern-port995.pcapng",
+      "sessions": 1,
+      "sessions_in_capture": 1,
+      "rows_capped": false,
+      "protocols": [
+        "POP3"
+      ],
+      "labels": [
+        "LOW"
+      ]
+    },
+    {
+      "capture": "pop3-modern-port9995.pcapng",
+      "sessions": 0,
+      "sessions_in_capture": 0,
+      "rows_capped": false,
+      "protocols": [],
+      "labels": []
+    },
+    {
+      "capture": "pop3-modern-tls13-port995.pcapng",
+      "sessions": 1,
+      "sessions_in_capture": 1,
+      "rows_capped": false,
+      "protocols": [
+        "POP3"
+      ],
+      "labels": [
+        "LOW"
+      ]
+    },
+    {
+      "capture": "pop3-modern-tls13-port9995.pcapng",
+      "sessions": 0,
+      "sessions_in_capture": 0,
+      "rows_capped": false,
+      "protocols": [],
+      "labels": []
+    },
+    {
+      "capture": "pop3-null-cipher-port995.pcapng",
+      "sessions": 1,
+      "sessions_in_capture": 1,
+      "rows_capped": false,
+      "protocols": [
+        "POP3"
+      ],
+      "labels": [
+        "CRITICAL"
+      ]
+    },
+    {
+      "capture": "pop3-null-cipher-port9995.pcapng",
+      "sessions": 0,
+      "sessions_in_capture": 0,
+      "rows_capped": false,
+      "protocols": [],
+      "labels": []
+    },
+    {
+      "capture": "pop3-static-rsa-port995.pcapng",
+      "sessions": 1,
+      "sessions_in_capture": 1,
+      "rows_capped": false,
+      "protocols": [
+        "POP3"
+      ],
+      "labels": [
+        "MEDIUM"
+      ]
+    },
+    {
+      "capture": "pop3-static-rsa-port9995.pcapng",
+      "sessions": 0,
+      "sessions_in_capture": 0,
+      "rows_capped": false,
+      "protocols": [],
+      "labels": []
+    },
+    {
+      "capture": "pop3-weak-cert-port995.pcapng",
+      "sessions": 1,
+      "sessions_in_capture": 1,
+      "rows_capped": false,
+      "protocols": [
+        "POP3"
+      ],
+      "labels": [
+        "CRITICAL"
+      ]
+    },
+    {
+      "capture": "pop3-weak-cert-port9995.pcapng",
+      "sessions": 0,
+      "sessions_in_capture": 0,
+      "rows_capped": false,
+      "protocols": [],
+      "labels": []
+    },
+    {
+      "capture": "smtp-cbc-only-port465.pcapng",
+      "sessions": 1,
+      "sessions_in_capture": 1,
+      "rows_capped": false,
+      "protocols": [
+        "SMTP"
+      ],
+      "labels": [
+        "MEDIUM"
+      ]
+    },
+    {
+      "capture": "smtp-cbc-only-port9465.pcapng",
+      "sessions": 0,
+      "sessions_in_capture": 0,
+      "rows_capped": false,
+      "protocols": [],
+      "labels": []
+    },
+    {
+      "capture": "smtp-legacy-tls10-port465.pcapng",
+      "sessions": 1,
+      "sessions_in_capture": 1,
+      "rows_capped": false,
+      "protocols": [
+        "SMTP"
+      ],
+      "labels": [
+        "CRITICAL"
+      ]
+    },
+    {
+      "capture": "smtp-legacy-tls10-port9465.pcapng",
+      "sessions": 0,
+      "sessions_in_capture": 0,
+      "rows_capped": false,
+      "protocols": [],
+      "labels": []
+    },
+    {
+      "capture": "smtp-modern-port465.pcapng",
+      "sessions": 1,
+      "sessions_in_capture": 1,
+      "rows_capped": false,
+      "protocols": [
+        "SMTP"
+      ],
+      "labels": [
+        "LOW"
+      ]
+    },
+    {
+      "capture": "smtp-modern-port9465.pcapng",
+      "sessions": 0,
+      "sessions_in_capture": 0,
+      "rows_capped": false,
+      "protocols": [],
+      "labels": []
+    },
+    {
+      "capture": "smtp-modern-tls13-port465.pcapng",
+      "sessions": 1,
+      "sessions_in_capture": 1,
+      "rows_capped": false,
+      "protocols": [
+        "SMTP"
+      ],
+      "labels": [
+        "LOW"
+      ]
+    },
+    {
+      "capture": "smtp-modern-tls13-port9465.pcapng",
+      "sessions": 0,
+      "sessions_in_capture": 0,
+      "rows_capped": false,
+      "protocols": [],
+      "labels": []
+    },
+    {
+      "capture": "smtp-null-cipher-port465.pcapng",
+      "sessions": 1,
+      "sessions_in_capture": 1,
+      "rows_capped": false,
+      "protocols": [
+        "SMTP"
+      ],
+      "labels": [
+        "CRITICAL"
+      ]
+    },
+    {
+      "capture": "smtp-null-cipher-port9465.pcapng",
+      "sessions": 0,
+      "sessions_in_capture": 0,
+      "rows_capped": false,
+      "protocols": [],
+      "labels": []
+    },
+    {
+      "capture": "smtp-static-rsa-port465.pcapng",
+      "sessions": 1,
+      "sessions_in_capture": 1,
+      "rows_capped": false,
+      "protocols": [
+        "SMTP"
+      ],
+      "labels": [
+        "MEDIUM"
+      ]
+    },
+    {
+      "capture": "smtp-static-rsa-port9465.pcapng",
+      "sessions": 0,
+      "sessions_in_capture": 0,
+      "rows_capped": false,
+      "protocols": [],
+      "labels": []
+    },
+    {
+      "capture": "smtp-weak-cert-port465.pcapng",
+      "sessions": 1,
+      "sessions_in_capture": 1,
+      "rows_capped": false,
+      "protocols": [
+        "SMTP"
+      ],
+      "labels": [
+        "CRITICAL"
+      ]
+    },
+    {
+      "capture": "smtp-weak-cert-port9465.pcapng",
+      "sessions": 0,
+      "sessions_in_capture": 0,
+      "rows_capped": false,
+      "protocols": [],
+      "labels": []
+    }
+  ],
+  "capture_calibration": {
+    "rows": 39,
+    "match_rate": "39/39",
+    "confusion": {
+      "HIGH": {
+        "HIGH": 3
+      },
+      "CRITICAL": {
+        "CRITICAL": 18
+      },
+      "MEDIUM": {
+        "MEDIUM": 9
+      },
+      "LOW": {
+        "LOW": 9
+      }
+    },
+    "flagged_anomalous": 26,
+    "mismatch_examples": [
+      {
+        "expected": "HIGH",
+        "model": "HIGH"
+      },
+      {
+        "expected": "HIGH",
+        "model": "HIGH"
+      },
+      {
+        "expected": "HIGH",
+        "model": "HIGH"
+      },
+      {
+        "expected": "CRITICAL",
+        "model": "CRITICAL"
+      },
+      {
+        "expected": "LOW",
+        "model": "LOW"
+      },
+      {
+        "expected": "MEDIUM",
+        "model": "MEDIUM"
+      },
+      {
+        "expected": "CRITICAL",
+        "model": "CRITICAL"
+      },
+      {
+        "expected": "MEDIUM",
+        "model": "MEDIUM"
+      },
+      {
+        "expected": "CRITICAL",
+        "model": "CRITICAL"
+      },
+      {
+        "expected": "LOW",
+        "model": "LOW"
+      }
+    ],
+    "scope": "in-sample (capture rows were used for training); small sample, weak-supervision labels"
+  },
+  "capture_calibration_matches": "39/39",
+  "capture_holdout": {
+    "method": "leave-one-capture-out (a whole capture is held out, so no session from it helped training)",
+    "captures": 39,
+    "rows": 39,
+    "correct": 37,
+    "match_rate": "37/39",
+    "accuracy": 0.9487,
+    "per_capture": [
+      {
+        "capture": "imap-cbc-only-port993.pcapng",
+        "rows": 1,
+        "correct": 1,
+        "expected_labels": [
+          "MEDIUM"
+        ],
+        "predicted_labels": [
+          "MEDIUM"
+        ]
+      },
+      {
+        "capture": "imap-cleartext-login.pcapng",
+        "rows": 1,
+        "correct": 0,
+        "expected_labels": [
+          "CRITICAL"
+        ],
+        "predicted_labels": [
+          "HIGH"
+        ]
+      },
+      {
+        "capture": "imap-legacy-tls10-port993.pcapng",
+        "rows": 1,
+        "correct": 1,
+        "expected_labels": [
+          "CRITICAL"
+        ],
+        "predicted_labels": [
+          "CRITICAL"
+        ]
+      },
+      {
+        "capture": "imap-modern-port993.pcapng",
+        "rows": 1,
+        "correct": 1,
+        "expected_labels": [
+          "LOW"
+        ],
+        "predicted_labels": [
+          "LOW"
+        ]
+      },
+      {
+        "capture": "imap-modern-tls13-port993.pcapng",
+        "rows": 1,
+        "correct": 1,
+        "expected_labels": [
+          "LOW"
+        ],
+        "predicted_labels": [
+          "LOW"
+        ]
+      },
+      {
+        "capture": "imap-null-cipher-port993.pcapng",
+        "rows": 1,
+        "correct": 1,
+        "expected_labels": [
+          "CRITICAL"
+        ],
+        "predicted_labels": [
+          "CRITICAL"
+        ]
+      },
+      {
+        "capture": "imap-ssl.pcapng",
+        "rows": 1,
+        "correct": 1,
+        "expected_labels": [
+          "HIGH"
+        ],
+        "predicted_labels": [
+          "HIGH"
+        ]
+      },
+      {
+        "capture": "imap-static-rsa-port993.pcapng",
+        "rows": 1,
+        "correct": 1,
+        "expected_labels": [
+          "MEDIUM"
+        ],
+        "predicted_labels": [
+          "MEDIUM"
+        ]
+      },
+      {
+        "capture": "imap-weak-cert-port993.pcapng",
+        "rows": 1,
+        "correct": 1,
+        "expected_labels": [
+          "CRITICAL"
+        ],
+        "predicted_labels": [
+          "CRITICAL"
+        ]
+      },
+      {
+        "capture": "imaps-cbc-cipher.pcapng",
+        "rows": 1,
+        "correct": 1,
+        "expected_labels": [
+          "MEDIUM"
+        ],
+        "predicted_labels": [
+          "MEDIUM"
+        ]
+      },
+      {
+        "capture": "imaps-null-cipher.pcapng",
+        "rows": 1,
+        "correct": 1,
+        "expected_labels": [
+          "CRITICAL"
+        ],
+        "predicted_labels": [
+          "CRITICAL"
+        ]
+      },
+      {
+        "capture": "imaps-tls10-legacy.pcapng",
+        "rows": 1,
+        "correct": 1,
+        "expected_labels": [
+          "CRITICAL"
+        ],
+        "predicted_labels": [
+          "CRITICAL"
+        ]
+      },
+      {
+        "capture": "imaps-tls13-cert-hidden.pcapng",
+        "rows": 1,
+        "correct": 1,
+        "expected_labels": [
+          "LOW"
+        ],
+        "predicted_labels": [
+          "LOW"
+        ]
+      },
+      {
+        "capture": "imaps-weak-certificate.pcapng",
+        "rows": 1,
+        "correct": 1,
+        "expected_labels": [
+          "CRITICAL"
+        ],
+        "predicted_labels": [
+          "CRITICAL"
+        ]
+      },
+      {
+        "capture": "pop-ssl.pcapng",
+        "rows": 1,
+        "correct": 1,
+        "expected_labels": [
+          "HIGH"
+        ],
+        "predicted_labels": [
+          "HIGH"
+        ]
+      },
+      {
+        "capture": "pop3-cbc-only-port995.pcapng",
+        "rows": 1,
+        "correct": 1,
+        "expected_labels": [
+          "MEDIUM"
+        ],
+        "predicted_labels": [
+          "MEDIUM"
+        ]
+      },
+      {
+        "capture": "pop3-cleartext.pcapng",
+        "rows": 1,
+        "correct": 1,
+        "expected_labels": [
+          "CRITICAL"
+        ],
+        "predicted_labels": [
+          "CRITICAL"
+        ]
+      },
+      {
+        "capture": "pop3-legacy-tls10-port995.pcapng",
+        "rows": 1,
+        "correct": 1,
+        "expected_labels": [
+          "CRITICAL"
+        ],
+        "predicted_labels": [
+          "CRITICAL"
+        ]
+      },
+      {
+        "capture": "pop3-modern-port995.pcapng",
+        "rows": 1,
+        "correct": 1,
+        "expected_labels": [
+          "LOW"
+        ],
+        "predicted_labels": [
+          "LOW"
+        ]
+      },
+      {
+        "capture": "pop3-modern-tls13-port995.pcapng",
+        "rows": 1,
+        "correct": 1,
+        "expected_labels": [
+          "LOW"
+        ],
+        "predicted_labels": [
+          "LOW"
+        ]
+      },
+      {
+        "capture": "pop3-null-cipher-port995.pcapng",
+        "rows": 1,
+        "correct": 1,
+        "expected_labels": [
+          "CRITICAL"
+        ],
+        "predicted_labels": [
+          "CRITICAL"
+        ]
+      },
+      {
+        "capture": "pop3-static-rsa-port995.pcapng",
+        "rows": 1,
+        "correct": 1,
+        "expected_labels": [
+          "MEDIUM"
+        ],
+        "predicted_labels": [
+          "MEDIUM"
+        ]
+      },
+      {
+        "capture": "pop3-weak-cert-port995.pcapng",
+        "rows": 1,
+        "correct": 1,
+        "expected_labels": [
+          "CRITICAL"
+        ],
+        "predicted_labels": [
+          "CRITICAL"
+        ]
+      },
+      {
+        "capture": "pop3s-cbc-cipher.pcapng",
+        "rows": 1,
+        "correct": 1,
+        "expected_labels": [
+          "MEDIUM"
+        ],
+        "predicted_labels": [
+          "MEDIUM"
+        ]
+      },
+      {
+        "capture": "pop3s-tls10-legacy.pcapng",
+        "rows": 1,
+        "correct": 1,
+        "expected_labels": [
+          "CRITICAL"
+        ],
+        "predicted_labels": [
+          "CRITICAL"
+        ]
+      },
+      {
+        "capture": "pop3s-weak-certificate.pcapng",
+        "rows": 1,
+        "correct": 1,
+        "expected_labels": [
+          "CRITICAL"
+        ],
+        "predicted_labels": [
+          "CRITICAL"
+        ]
+      },
+      {
+        "capture": "smtp-cbc-only-port465.pcapng",
+        "rows": 1,
+        "correct": 1,
+        "expected_labels": [
+          "MEDIUM"
+        ],
+        "predicted_labels": [
+          "MEDIUM"
+        ]
+      },
+      {
+        "capture": "smtp-legacy-tls10-port465.pcapng",
+        "rows": 1,
+        "correct": 1,
+        "expected_labels": [
+          "CRITICAL"
+        ],
+        "predicted_labels": [
+          "CRITICAL"
+        ]
+      },
+      {
+        "capture": "smtp-modern-port465.pcapng",
+        "rows": 1,
+        "correct": 1,
+        "expected_labels": [
+          "LOW"
+        ],
+        "predicted_labels": [
+          "LOW"
+        ]
+      },
+      {
+        "capture": "smtp-modern-tls13-port465.pcapng",
+        "rows": 1,
+        "correct": 1,
+        "expected_labels": [
+          "LOW"
+        ],
+        "predicted_labels": [
+          "LOW"
+        ]
+      },
+      {
+        "capture": "smtp-null-cipher-port465.pcapng",
+        "rows": 1,
+        "correct": 1,
+        "expected_labels": [
+          "CRITICAL"
+        ],
+        "predicted_labels": [
+          "CRITICAL"
+        ]
+      },
+      {
+        "capture": "smtp-ssl.pcapng",
+        "rows": 1,
+        "correct": 1,
+        "expected_labels": [
+          "HIGH"
+        ],
+        "predicted_labels": [
+          "HIGH"
+        ]
+      },
+      {
+        "capture": "smtp-starttls-rejected.pcapng",
+        "rows": 1,
+        "correct": 1,
+        "expected_labels": [
+          "CRITICAL"
+        ],
+        "predicted_labels": [
+          "CRITICAL"
+        ]
+      },
+      {
+        "capture": "smtp-starttls-secure.pcapng",
+        "rows": 1,
+        "correct": 1,
+        "expected_labels": [
+          "LOW"
+        ],
+        "predicted_labels": [
+          "LOW"
+        ]
+      },
+      {
+        "capture": "smtp-static-rsa-port465.pcapng",
+        "rows": 1,
+        "correct": 0,
+        "expected_labels": [
+          "MEDIUM"
+        ],
+        "predicted_labels": [
+          "CRITICAL"
+        ]
+      },
+      {
+        "capture": "smtp-weak-cert-port465.pcapng",
+        "rows": 1,
+        "correct": 1,
+        "expected_labels": [
+          "CRITICAL"
+        ],
+        "predicted_labels": [
+          "CRITICAL"
+        ]
+      },
+      {
+        "capture": "smtps-cbc-cipher.pcapng",
+        "rows": 1,
+        "correct": 1,
+        "expected_labels": [
+          "MEDIUM"
+        ],
+        "predicted_labels": [
+          "MEDIUM"
+        ]
+      },
+      {
+        "capture": "smtps-tls13-modern.pcapng",
+        "rows": 1,
+        "correct": 1,
+        "expected_labels": [
+          "LOW"
+        ],
+        "predicted_labels": [
+          "LOW"
+        ]
+      },
+      {
+        "capture": "smtps-weak-certificate.pcapng",
+        "rows": 1,
+        "correct": 1,
+        "expected_labels": [
+          "CRITICAL"
+        ],
+        "predicted_labels": [
+          "CRITICAL"
+        ]
+      }
+    ],
+    "note": "Small sample: 13 captures and about 63 sessions with weak-supervision labels. Read this as a sanity check, not as field performance."
+  },
+  "synthetic_transfer": {
+    "method": "trained on synthetic rows only, evaluated on real captures (no real session seen in training)",
+    "rows": 39,
+    "correct": 34,
+    "match_rate": "34/39",
+    "accuracy": 0.8718,
+    "per_capture": [
+      {
+        "capture": "imap-cbc-only-port993.pcapng",
+        "rows": 1,
+        "correct": 1
+      },
+      {
+        "capture": "imap-cleartext-login.pcapng",
+        "rows": 1,
+        "correct": 0
+      },
+      {
+        "capture": "imap-legacy-tls10-port993.pcapng",
+        "rows": 1,
+        "correct": 1
+      },
+      {
+        "capture": "imap-modern-port993.pcapng",
+        "rows": 1,
+        "correct": 1
+      },
+      {
+        "capture": "imap-modern-tls13-port993.pcapng",
+        "rows": 1,
+        "correct": 1
+      },
+      {
+        "capture": "imap-null-cipher-port993.pcapng",
+        "rows": 1,
+        "correct": 0
+      },
+      {
+        "capture": "imap-ssl.pcapng",
+        "rows": 1,
+        "correct": 1
+      },
+      {
+        "capture": "imap-static-rsa-port993.pcapng",
+        "rows": 1,
+        "correct": 1
+      },
+      {
+        "capture": "imap-weak-cert-port993.pcapng",
+        "rows": 1,
+        "correct": 1
+      },
+      {
+        "capture": "imaps-cbc-cipher.pcapng",
+        "rows": 1,
+        "correct": 1
+      },
+      {
+        "capture": "imaps-null-cipher.pcapng",
+        "rows": 1,
+        "correct": 0
+      },
+      {
+        "capture": "imaps-tls10-legacy.pcapng",
+        "rows": 1,
+        "correct": 1
+      },
+      {
+        "capture": "imaps-tls13-cert-hidden.pcapng",
+        "rows": 1,
+        "correct": 1
+      },
+      {
+        "capture": "imaps-weak-certificate.pcapng",
+        "rows": 1,
+        "correct": 1
+      },
+      {
+        "capture": "pop-ssl.pcapng",
+        "rows": 1,
+        "correct": 1
+      },
+      {
+        "capture": "pop3-cbc-only-port995.pcapng",
+        "rows": 1,
+        "correct": 1
+      },
+      {
+        "capture": "pop3-cleartext.pcapng",
+        "rows": 1,
+        "correct": 1
+      },
+      {
+        "capture": "pop3-legacy-tls10-port995.pcapng",
+        "rows": 1,
+        "correct": 1
+      },
+      {
+        "capture": "pop3-modern-port995.pcapng",
+        "rows": 1,
+        "correct": 1
+      },
+      {
+        "capture": "pop3-modern-tls13-port995.pcapng",
+        "rows": 1,
+        "correct": 1
+      },
+      {
+        "capture": "pop3-null-cipher-port995.pcapng",
+        "rows": 1,
+        "correct": 0
+      },
+      {
+        "capture": "pop3-static-rsa-port995.pcapng",
+        "rows": 1,
+        "correct": 1
+      },
+      {
+        "capture": "pop3-weak-cert-port995.pcapng",
+        "rows": 1,
+        "correct": 1
+      },
+      {
+        "capture": "pop3s-cbc-cipher.pcapng",
+        "rows": 1,
+        "correct": 1
+      },
+      {
+        "capture": "pop3s-tls10-legacy.pcapng",
+        "rows": 1,
+        "correct": 1
+      },
+      {
+        "capture": "pop3s-weak-certificate.pcapng",
+        "rows": 1,
+        "correct": 1
+      },
+      {
+        "capture": "smtp-cbc-only-port465.pcapng",
+        "rows": 1,
+        "correct": 1
+      },
+      {
+        "capture": "smtp-legacy-tls10-port465.pcapng",
+        "rows": 1,
+        "correct": 1
+      },
+      {
+        "capture": "smtp-modern-port465.pcapng",
+        "rows": 1,
+        "correct": 1
+      },
+      {
+        "capture": "smtp-modern-tls13-port465.pcapng",
+        "rows": 1,
+        "correct": 1
+      },
+      {
+        "capture": "smtp-null-cipher-port465.pcapng",
+        "rows": 1,
+        "correct": 0
+      },
+      {
+        "capture": "smtp-ssl.pcapng",
+        "rows": 1,
+        "correct": 1
+      },
+      {
+        "capture": "smtp-starttls-rejected.pcapng",
+        "rows": 1,
+        "correct": 1
+      },
+      {
+        "capture": "smtp-starttls-secure.pcapng",
+        "rows": 1,
+        "correct": 1
+      },
+      {
+        "capture": "smtp-static-rsa-port465.pcapng",
+        "rows": 1,
+        "correct": 1
+      },
+      {
+        "capture": "smtp-weak-cert-port465.pcapng",
+        "rows": 1,
+        "correct": 1
+      },
+      {
+        "capture": "smtps-cbc-cipher.pcapng",
+        "rows": 1,
+        "correct": 1
+      },
+      {
+        "capture": "smtps-tls13-modern.pcapng",
+        "rows": 1,
+        "correct": 1
+      },
+      {
+        "capture": "smtps-weak-certificate.pcapng",
+        "rows": 1,
+        "correct": 1
+      }
+    ]
+  },
+  "training_dataset": "training_dataset.csv",
+  "training_note": "Synthetic rows (random scenario generator) plus real capture rows labelled by the explainable rule engine (weak supervision). Synthetic accuracy is not production accuracy evidence. Two capture numbers are recorded: capture_calibration is in-sample (those rows were used for training) and capture_holdout is leave-one-capture-out, which is the honest one to quote.",
+  "validation_report": {
+    "CRITICAL": {
+      "precision": 0.9841269841269841,
+      "recall": 0.9880478087649402,
+      "f1-score": 0.9860834990059643,
+      "support": 251.0
+    },
+    "HIGH": {
+      "precision": 0.8974358974358975,
+      "recall": 0.963302752293578,
+      "f1-score": 0.9292035398230089,
+      "support": 109.0
+    },
+    "LOW": {
+      "precision": 1.0,
+      "recall": 0.9916666666666667,
+      "f1-score": 0.99581589958159,
+      "support": 360.0
+    },
+    "MEDIUM": {
+      "precision": 0.9927007299270073,
+      "recall": 0.9714285714285714,
+      "f1-score": 0.9819494584837545,
+      "support": 280.0
+    },
+    "accuracy": 0.982,
+    "macro avg": {
+      "precision": 0.9685659028724722,
+      "recall": 0.9786114497884391,
+      "f1-score": 0.9732630992235793,
+      "support": 1000.0
+    },
+    "weighted avg": {
+      "precision": 0.9827925902159479,
+      "recall": 0.982,
+      "f1-score": 0.9822297163160285,
+      "support": 1000.0
+    }
+  }
+}

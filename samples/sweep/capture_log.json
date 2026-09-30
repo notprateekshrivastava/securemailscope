@@ -1,0 +1,716 @@
+[
+  {
+    "scenario": "smtp-modern-port465",
+    "capture": "samples/sweep/smtp-modern-port465.pcapng",
+    "bytes": 5416,
+    "payload_packets": 4,
+    "server_result": {
+      "negotiated_version": "TLSv1.2",
+      "negotiated_cipher": "ECDHE-RSA-AES128-GCM-SHA256",
+      "implicit_tls": true
+    },
+    "server_error": null,
+    "client_result": {
+      "client_version": "TLSv1.2",
+      "client_cipher": "ECDHE-RSA-AES128-GCM-SHA256"
+    },
+    "client_error": null
+  },
+  {
+    "scenario": "smtp-modern-tls13-port465",
+    "capture": "samples/sweep/smtp-modern-tls13-port465.pcapng",
+    "bytes": 8076,
+    "payload_packets": 5,
+    "server_result": {
+      "negotiated_version": "TLSv1.3",
+      "negotiated_cipher": "TLS_AES_256_GCM_SHA384",
+      "implicit_tls": true
+    },
+    "server_error": null,
+    "client_result": {
+      "client_version": "TLSv1.3",
+      "client_cipher": "TLS_AES_256_GCM_SHA384"
+    },
+    "client_error": null
+  },
+  {
+    "scenario": "smtp-static-rsa-port465",
+    "capture": "samples/sweep/smtp-static-rsa-port465.pcapng",
+    "bytes": 5368,
+    "payload_packets": 4,
+    "server_result": {
+      "negotiated_version": "TLSv1.2",
+      "negotiated_cipher": "AES128-SHA",
+      "implicit_tls": true
+    },
+    "server_error": null,
+    "client_result": {
+      "client_version": "TLSv1.2",
+      "client_cipher": "AES128-SHA"
+    },
+    "client_error": null
+  },
+  {
+    "scenario": "smtp-legacy-tls10-port465",
+    "capture": "samples/sweep/smtp-legacy-tls10-port465.pcapng",
+    "bytes": 5280,
+    "payload_packets": 4,
+    "server_result": {
+      "negotiated_version": "TLSv1",
+      "negotiated_cipher": "AES128-SHA",
+      "implicit_tls": true
+    },
+    "server_error": null,
+    "client_result": {
+      "client_version": "TLSv1",
+      "client_cipher": "AES128-SHA"
+    },
+    "client_error": null
+  },
+  {
+    "scenario": "smtp-null-cipher-port465",
+    "capture": "samples/sweep/smtp-null-cipher-port465.pcapng",
+    "bytes": 5304,
+    "payload_packets": 4,
+    "server_result": {
+      "negotiated_version": "TLSv1.2",
+      "negotiated_cipher": "NULL-SHA",
+      "implicit_tls": true
+    },
+    "server_error": null,
+    "client_result": {
+      "client_version": "TLSv1.2",
+      "client_cipher": "NULL-SHA"
+    },
+    "client_error": null
+  },
+  {
+    "scenario": "smtp-cbc-only-port465",
+    "capture": "samples/sweep/smtp-cbc-only-port465.pcapng",
+    "bytes": 5484,
+    "payload_packets": 4,
+    "server_result": {
+      "negotiated_version": "TLSv1.2",
+      "negotiated_cipher": "ECDHE-RSA-AES128-SHA",
+      "implicit_tls": true
+    },
+    "server_error": null,
+    "client_result": {
+      "client_version": "TLSv1.2",
+      "client_cipher": "ECDHE-RSA-AES128-SHA"
+    },
+    "client_error": null
+  },
+  {
+    "scenario": "smtp-weak-cert-port465",
+    "capture": "samples/sweep/smtp-weak-cert-port465.pcapng",
+    "bytes": 5140,
+    "payload_packets": 4,
+    "server_result": {
+      "negotiated_version": "TLSv1.2",
+      "negotiated_cipher": "ECDHE-RSA-AES128-GCM-SHA256",
+      "implicit_tls": true
+    },
+    "server_error": null,
+    "client_result": {
+      "client_version": "TLSv1.2",
+      "client_cipher": "ECDHE-RSA-AES128-GCM-SHA256"
+    },
+    "client_error": null
+  },
+  {
+    "scenario": "smtp-modern-port9465",
+    "capture": "samples/sweep/smtp-modern-port9465.pcapng",
+    "bytes": 5416,
+    "payload_packets": 4,
+    "server_result": {
+      "negotiated_version": "TLSv1.2",
+      "negotiated_cipher": "ECDHE-RSA-AES128-GCM-SHA256",
+      "implicit_tls": true
+    },
+    "server_error": null,
+    "client_result": {
+      "client_version": "TLSv1.2",
+      "client_cipher": "ECDHE-RSA-AES128-GCM-SHA256"
+    },
+    "client_error": null
+  },
+  {
+    "scenario": "smtp-modern-tls13-port9465",
+    "capture": "samples/sweep/smtp-modern-tls13-port9465.pcapng",
+    "bytes": 8076,
+    "payload_packets": 5,
+    "server_result": {
+      "negotiated_version": "TLSv1.3",
+      "negotiated_cipher": "TLS_AES_256_GCM_SHA384",
+      "implicit_tls": true
+    },
+    "server_error": null,
+    "client_result": {
+      "client_version": "TLSv1.3",
+      "client_cipher": "TLS_AES_256_GCM_SHA384"
+    },
+    "client_error": null
+  },
+  {
+    "scenario": "smtp-static-rsa-port9465",
+    "capture": "samples/sweep/smtp-static-rsa-port9465.pcapng",
+    "bytes": 5368,
+    "payload_packets": 4,
+    "server_result": {
+      "negotiated_version": "TLSv1.2",
+      "negotiated_cipher": "AES128-SHA",
+      "implicit_tls": true
+    },
+    "server_error": null,
+    "client_result": {
+      "client_version": "TLSv1.2",
+      "client_cipher": "AES128-SHA"
+    },
+    "client_error": null
+  },
+  {
+    "scenario": "smtp-legacy-tls10-port9465",
+    "capture": "samples/sweep/smtp-legacy-tls10-port9465.pcapng",
+    "bytes": 5280,
+    "payload_packets": 4,
+    "server_result": {
+      "negotiated_version": "TLSv1",
+      "negotiated_cipher": "AES128-SHA",
+      "implicit_tls": true
+    },
+    "server_error": null,
+    "client_result": {
+      "client_version": "TLSv1",
+      "client_cipher": "AES128-SHA"
+    },
+    "client_error": null
+  },
+  {
+    "scenario": "smtp-null-cipher-port9465",
+    "capture": "samples/sweep/smtp-null-cipher-port9465.pcapng",
+    "bytes": 5304,
+    "payload_packets": 4,
+    "server_result": {
+      "negotiated_version": "TLSv1.2",
+      "negotiated_cipher": "NULL-SHA",
+      "implicit_tls": true
+    },
+    "server_error": null,
+    "client_result": {
+      "client_version": "TLSv1.2",
+      "client_cipher": "NULL-SHA"
+    },
+    "client_error": null
+  },
+  {
+    "scenario": "smtp-cbc-only-port9465",
+    "capture": "samples/sweep/smtp-cbc-only-port9465.pcapng",
+    "bytes": 5484,
+    "payload_packets": 4,
+    "server_result": {
+      "negotiated_version": "TLSv1.2",
+      "negotiated_cipher": "ECDHE-RSA-AES128-SHA",
+      "implicit_tls": true
+    },
+    "server_error": null,
+    "client_result": {
+      "client_version": "TLSv1.2",
+      "client_cipher": "ECDHE-RSA-AES128-SHA"
+    },
+    "client_error": null
+  },
+  {
+    "scenario": "smtp-weak-cert-port9465",
+    "capture": "samples/sweep/smtp-weak-cert-port9465.pcapng",
+    "bytes": 5140,
+    "payload_packets": 4,
+    "server_result": {
+      "negotiated_version": "TLSv1.2",
+      "negotiated_cipher": "ECDHE-RSA-AES128-GCM-SHA256",
+      "implicit_tls": true
+    },
+    "server_error": null,
+    "client_result": {
+      "client_version": "TLSv1.2",
+      "client_cipher": "ECDHE-RSA-AES128-GCM-SHA256"
+    },
+    "client_error": null
+  },
+  {
+    "scenario": "imap-modern-port993",
+    "capture": "samples/sweep/imap-modern-port993.pcapng",
+    "bytes": 5416,
+    "payload_packets": 4,
+    "server_result": {
+      "negotiated_version": "TLSv1.2",
+      "negotiated_cipher": "ECDHE-RSA-AES128-GCM-SHA256",
+      "implicit_tls": true
+    },
+    "server_error": null,
+    "client_result": {
+      "client_version": "TLSv1.2",
+      "client_cipher": "ECDHE-RSA-AES128-GCM-SHA256"
+    },
+    "client_error": null
+  },
+  {
+    "scenario": "imap-modern-tls13-port993",
+    "capture": "samples/sweep/imap-modern-tls13-port993.pcapng",
+    "bytes": 8076,
+    "payload_packets": 5,
+    "server_result": {
+      "negotiated_version": "TLSv1.3",
+      "negotiated_cipher": "TLS_AES_256_GCM_SHA384",
+      "implicit_tls": true
+    },
+    "server_error": null,
+    "client_result": {
+      "client_version": "TLSv1.3",
+      "client_cipher": "TLS_AES_256_GCM_SHA384"
+    },
+    "client_error": null
+  },
+  {
+    "scenario": "imap-static-rsa-port993",
+    "capture": "samples/sweep/imap-static-rsa-port993.pcapng",
+    "bytes": 5368,
+    "payload_packets": 4,
+    "server_result": {
+      "negotiated_version": "TLSv1.2",
+      "negotiated_cipher": "AES128-SHA",
+      "implicit_tls": true
+    },
+    "server_error": null,
+    "client_result": {
+      "client_version": "TLSv1.2",
+      "client_cipher": "AES128-SHA"
+    },
+    "client_error": null
+  },
+  {
+    "scenario": "imap-legacy-tls10-port993",
+    "capture": "samples/sweep/imap-legacy-tls10-port993.pcapng",
+    "bytes": 5280,
+    "payload_packets": 4,
+    "server_result": {
+      "negotiated_version": "TLSv1",
+      "negotiated_cipher": "AES128-SHA",
+      "implicit_tls": true
+    },
+    "server_error": null,
+    "client_result": {
+      "client_version": "TLSv1",
+      "client_cipher": "AES128-SHA"
+    },
+    "client_error": null
+  },
+  {
+    "scenario": "imap-null-cipher-port993",
+    "capture": "samples/sweep/imap-null-cipher-port993.pcapng",
+    "bytes": 5304,
+    "payload_packets": 4,
+    "server_result": {
+      "negotiated_version": "TLSv1.2",
+      "negotiated_cipher": "NULL-SHA",
+      "implicit_tls": true
+    },
+    "server_error": null,
+    "client_result": {
+      "client_version": "TLSv1.2",
+      "client_cipher": "NULL-SHA"
+    },
+    "client_error": null
+  },
+  {
+    "scenario": "imap-cbc-only-port993",
+    "capture": "samples/sweep/imap-cbc-only-port993.pcapng",
+    "bytes": 5484,
+    "payload_packets": 4,
+    "server_result": {
+      "negotiated_version": "TLSv1.2",
+      "negotiated_cipher": "ECDHE-RSA-AES128-SHA",
+      "implicit_tls": true
+    },
+    "server_error": null,
+    "client_result": {
+      "client_version": "TLSv1.2",
+      "client_cipher": "ECDHE-RSA-AES128-SHA"
+    },
+    "client_error": null
+  },
+  {
+    "scenario": "imap-weak-cert-port993",
+    "capture": "samples/sweep/imap-weak-cert-port993.pcapng",
+    "bytes": 5140,
+    "payload_packets": 4,
+    "server_result": {
+      "negotiated_version": "TLSv1.2",
+      "negotiated_cipher": "ECDHE-RSA-AES128-GCM-SHA256",
+      "implicit_tls": true
+    },
+    "server_error": null,
+    "client_result": {
+      "client_version": "TLSv1.2",
+      "client_cipher": "ECDHE-RSA-AES128-GCM-SHA256"
+    },
+    "client_error": null
+  },
+  {
+    "scenario": "imap-modern-port9993",
+    "capture": "samples/sweep/imap-modern-port9993.pcapng",
+    "bytes": 5416,
+    "payload_packets": 4,
+    "server_result": {
+      "negotiated_version": "TLSv1.2",
+      "negotiated_cipher": "ECDHE-RSA-AES128-GCM-SHA256",
+      "implicit_tls": true
+    },
+    "server_error": null,
+    "client_result": {
+      "client_version": "TLSv1.2",
+      "client_cipher": "ECDHE-RSA-AES128-GCM-SHA256"
+    },
+    "client_error": null
+  },
+  {
+    "scenario": "imap-modern-tls13-port9993",
+    "capture": "samples/sweep/imap-modern-tls13-port9993.pcapng",
+    "bytes": 8076,
+    "payload_packets": 5,
+    "server_result": {
+      "negotiated_version": "TLSv1.3",
+      "negotiated_cipher": "TLS_AES_256_GCM_SHA384",
+      "implicit_tls": true
+    },
+    "server_error": null,
+    "client_result": {
+      "client_version": "TLSv1.3",
+      "client_cipher": "TLS_AES_256_GCM_SHA384"
+    },
+    "client_error": null
+  },
+  {
+    "scenario": "imap-static-rsa-port9993",
+    "capture": "samples/sweep/imap-static-rsa-port9993.pcapng",
+    "bytes": 5368,
+    "payload_packets": 4,
+    "server_result": {
+      "negotiated_version": "TLSv1.2",
+      "negotiated_cipher": "AES128-SHA",
+      "implicit_tls": true
+    },
+    "server_error": null,
+    "client_result": {
+      "client_version": "TLSv1.2",
+      "client_cipher": "AES128-SHA"
+    },
+    "client_error": null
+  },
+  {
+    "scenario": "imap-legacy-tls10-port9993",
+    "capture": "samples/sweep/imap-legacy-tls10-port9993.pcapng",
+    "bytes": 5280,
+    "payload_packets": 4,
+    "server_result": {
+      "negotiated_version": "TLSv1",
+      "negotiated_cipher": "AES128-SHA",
+      "implicit_tls": true
+    },
+    "server_error": null,
+    "client_result": {
+      "client_version": "TLSv1",
+      "client_cipher": "AES128-SHA"
+    },
+    "client_error": null
+  },
+  {
+    "scenario": "imap-null-cipher-port9993",
+    "capture": "samples/sweep/imap-null-cipher-port9993.pcapng",
+    "bytes": 5304,
+    "payload_packets": 4,
+    "server_result": {
+      "negotiated_version": "TLSv1.2",
+      "negotiated_cipher": "NULL-SHA",
+      "implicit_tls": true
+    },
+    "server_error": null,
+    "client_result": {
+      "client_version": "TLSv1.2",
+      "client_cipher": "NULL-SHA"
+    },
+    "client_error": null
+  },
+  {
+    "scenario": "imap-cbc-only-port9993",
+    "capture": "samples/sweep/imap-cbc-only-port9993.pcapng",
+    "bytes": 5484,
+    "payload_packets": 4,
+    "server_result": {
+      "negotiated_version": "TLSv1.2",
+      "negotiated_cipher": "ECDHE-RSA-AES128-SHA",
+      "implicit_tls": true
+    },
+    "server_error": null,
+    "client_result": {
+      "client_version": "TLSv1.2",
+      "client_cipher": "ECDHE-RSA-AES128-SHA"
+    },
+    "client_error": null
+  },
+  {
+    "scenario": "imap-weak-cert-port9993",
+    "capture": "samples/sweep/imap-weak-cert-port9993.pcapng",
+    "bytes": 5140,
+    "payload_packets": 4,
+    "server_result": {
+      "negotiated_version": "TLSv1.2",
+      "negotiated_cipher": "ECDHE-RSA-AES128-GCM-SHA256",
+      "implicit_tls": true
+    },
+    "server_error": null,
+    "client_result": {
+      "client_version": "TLSv1.2",
+      "client_cipher": "ECDHE-RSA-AES128-GCM-SHA256"
+    },
+    "client_error": null
+  },
+  {
+    "scenario": "pop3-modern-port995",
+    "capture": "samples/sweep/pop3-modern-port995.pcapng",
+    "bytes": 5416,
+    "payload_packets": 4,
+    "server_result": {
+      "negotiated_version": "TLSv1.2",
+      "negotiated_cipher": "ECDHE-RSA-AES128-GCM-SHA256",
+      "implicit_tls": true
+    },
+    "server_error": null,
+    "client_result": {
+      "client_version": "TLSv1.2",
+      "client_cipher": "ECDHE-RSA-AES128-GCM-SHA256"
+    },
+    "client_error": null
+  },
+  {
+    "scenario": "pop3-modern-tls13-port995",
+    "capture": "samples/sweep/pop3-modern-tls13-port995.pcapng",
+    "bytes": 8076,
+    "payload_packets": 5,
+    "server_result": {
+      "negotiated_version": "TLSv1.3",
+      "negotiated_cipher": "TLS_AES_256_GCM_SHA384",
+      "implicit_tls": true
+    },
+    "server_error": null,
+    "client_result": {
+      "client_version": "TLSv1.3",
+      "client_cipher": "TLS_AES_256_GCM_SHA384"
+    },
+    "client_error": null
+  },
+  {
+    "scenario": "pop3-static-rsa-port995",
+    "capture": "samples/sweep/pop3-static-rsa-port995.pcapng",
+    "bytes": 5368,
+    "payload_packets": 4,
+    "server_result": {
+      "negotiated_version": "TLSv1.2",
+      "negotiated_cipher": "AES128-SHA",
+      "implicit_tls": true
+    },
+    "server_error": null,
+    "client_result": {
+      "client_version": "TLSv1.2",
+      "client_cipher": "AES128-SHA"
+    },
+    "client_error": null
+  },
+  {
+    "scenario": "pop3-legacy-tls10-port995",
+    "capture": "samples/sweep/pop3-legacy-tls10-port995.pcapng",
+    "bytes": 5280,
+    "payload_packets": 4,
+    "server_result": {
+      "negotiated_version": "TLSv1",
+      "negotiated_cipher": "AES128-SHA",
+      "implicit_tls": true
+    },
+    "server_error": null,
+    "client_result": {
+      "client_version": "TLSv1",
+      "client_cipher": "AES128-SHA"
+    },
+    "client_error": null
+  },
+  {
+    "scenario": "pop3-null-cipher-port995",
+    "capture": "samples/sweep/pop3-null-cipher-port995.pcapng",
+    "bytes": 5304,
+    "payload_packets": 4,
+    "server_result": {
+      "negotiated_version": "TLSv1.2",
+      "negotiated_cipher": "NULL-SHA",
+      "implicit_tls": true
+    },
+    "server_error": null,
+    "client_result": {
+      "client_version": "TLSv1.2",
+      "client_cipher": "NULL-SHA"
+    },
+    "client_error": null
+  },
+  {
+    "scenario": "pop3-cbc-only-port995",
+    "capture": "samples/sweep/pop3-cbc-only-port995.pcapng",
+    "bytes": 5484,
+    "payload_packets": 4,
+    "server_result": {
+      "negotiated_version": "TLSv1.2",
+      "negotiated_cipher": "ECDHE-RSA-AES128-SHA",
+      "implicit_tls": true
+    },
+    "server_error": null,
+    "client_result": {
+      "client_version": "TLSv1.2",
+      "client_cipher": "ECDHE-RSA-AES128-SHA"
+    },
+    "client_error": null
+  },
+  {
+    "scenario": "pop3-weak-cert-port995",
+    "capture": "samples/sweep/pop3-weak-cert-port995.pcapng",
+    "bytes": 5140,
+    "payload_packets": 4,
+    "server_result": {
+      "negotiated_version": "TLSv1.2",
+      "negotiated_cipher": "ECDHE-RSA-AES128-GCM-SHA256",
+      "implicit_tls": true
+    },
+    "server_error": null,
+    "client_result": {
+      "client_version": "TLSv1.2",
+      "client_cipher": "ECDHE-RSA-AES128-GCM-SHA256"
+    },
+    "client_error": null
+  },
+  {
+    "scenario": "pop3-modern-port9995",
+    "capture": "samples/sweep/pop3-modern-port9995.pcapng",
+    "bytes": 5416,
+    "payload_packets": 4,
+    "server_result": {
+      "negotiated_version": "TLSv1.2",
+      "negotiated_cipher": "ECDHE-RSA-AES128-GCM-SHA256",
+      "implicit_tls": true
+    },
+    "server_error": null,
+    "client_result": {
+      "client_version": "TLSv1.2",
+      "client_cipher": "ECDHE-RSA-AES128-GCM-SHA256"
+    },
+    "client_error": null
+  },
+  {
+    "scenario": "pop3-modern-tls13-port9995",
+    "capture": "samples/sweep/pop3-modern-tls13-port9995.pcapng",
+    "bytes": 8076,
+    "payload_packets": 5,
+    "server_result": {
+      "negotiated_version": "TLSv1.3",
+      "negotiated_cipher": "TLS_AES_256_GCM_SHA384",
+      "implicit_tls": true
+    },
+    "server_error": null,
+    "client_result": {
+      "client_version": "TLSv1.3",
+      "client_cipher": "TLS_AES_256_GCM_SHA384"
+    },
+    "client_error": null
+  },
+  {
+    "scenario": "pop3-static-rsa-port9995",
+    "capture": "samples/sweep/pop3-static-rsa-port9995.pcapng",
+    "bytes": 5368,
+    "payload_packets": 4,
+    "server_result": {
+      "negotiated_version": "TLSv1.2",
+      "negotiated_cipher": "AES128-SHA",
+      "implicit_tls": true
+    },
+    "server_error": null,
+    "client_result": {
+      "client_version": "TLSv1.2",
+      "client_cipher": "AES128-SHA"
+    },
+    "client_error": null
+  },
+  {
+    "scenario": "pop3-legacy-tls10-port9995",
+    "capture": "samples/sweep/pop3-legacy-tls10-port9995.pcapng",
+    "bytes": 5280,
+    "payload_packets": 4,
+    "server_result": {
+      "negotiated_version": "TLSv1",
+      "negotiated_cipher": "AES128-SHA",
+      "implicit_tls": true
+    },
+    "server_error": null,
+    "client_result": {
+      "client_version": "TLSv1",
+      "client_cipher": "AES128-SHA"
+    },
+    "client_error": null
+  },
+  {
+    "scenario": "pop3-null-cipher-port9995",
+    "capture": "samples/sweep/pop3-null-cipher-port9995.pcapng",
+    "bytes": 5304,
+    "payload_packets": 4,
+    "server_result": {
+      "negotiated_version": "TLSv1.2",
+      "negotiated_cipher": "NULL-SHA",
+      "implicit_tls": true
+    },
+    "server_error": null,
+    "client_result": {
+      "client_version": "TLSv1.2",
+      "client_cipher": "NULL-SHA"
+    },
+    "client_error": null
+  },
+  {
+    "scenario": "pop3-cbc-only-port9995",
+    "capture": "samples/sweep/pop3-cbc-only-port9995.pcapng",
+    "bytes": 5484,
+    "payload_packets": 4,
+    "server_result": {
+      "negotiated_version": "TLSv1.2",
+      "negotiated_cipher": "ECDHE-RSA-AES128-SHA",
+      "implicit_tls": true
+    },
+    "server_error": null,
+    "client_result": {
+      "client_version": "TLSv1.2",
+      "client_cipher": "ECDHE-RSA-AES128-SHA"
+    },
+    "client_error": null
+  },
+  {
+    "scenario": "pop3-weak-cert-port9995",
+    "capture": "samples/sweep/pop3-weak-cert-port9995.pcapng",
+    "bytes": 5140,
+    "payload_packets": 4,
+    "server_result": {
+      "negotiated_version": "TLSv1.2",
+      "negotiated_cipher": "ECDHE-RSA-AES128-GCM-SHA256",
+      "implicit_tls": true
+    },
+    "server_error": null,
+    "client_result": {
+      "client_version": "TLSv1.2",
+      "client_cipher": "ECDHE-RSA-AES128-GCM-SHA256"
+    },
+    "client_error": null
+  }
+]

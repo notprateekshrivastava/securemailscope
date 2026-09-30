@@ -1,0 +1,82 @@
+name: tests
+
+# Runs on every push and pull request. This is the same suite you run by hand
+# (python scripts\self_check.py and python -m pytest -q), so a green badge means the
+# checks you know about actually passed on a clean machine - not just on the laptop
+# where the code was written.
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+
+      # TShark is the parsing engine, so it has to be present for the capture tests.
+      - name: Install TShark
+        run: |
+          sudo DEBIAN_FRONTEND=noninteractive apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends tshark
+          tshark --version | head -1
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements-dev.txt
+
+      - name: Train the model
+        run: python -m app.ml.train
+
+      - name: Environment check
+        run: python -m app.cli doctor
+
+      - name: Self check (synthetic regression + real captures)
+        run: python scripts/self_check.py
+
+      - name: Unit tests
+        run: python -m pytest -q
+
+      - name: Batch analysis over every sample capture
+        run: python -m app.cli batch samples --out data/batch --workers 2
+
+      - name: Confirm the dashboard is served and self-contained
+        run: |
+          python - <<'PY'
+          from fastapi.testclient import TestClient
+          from app.main import app
+
+          client = TestClient(app)
+          response = client.get("/dashboard")
+          assert response.status_code == 200, response.status_code
+          body = response.text
+          assert "<script" in body and "<style" in body
+          assert "https://" not in body, "the dashboard must not load anything remotely"
+          print("dashboard OK:", len(body), "bytes")
+          PY
+
+      - name: Upload the run's evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: evidence-python-${{ matrix.python-version }}
+          path: |
+            data/batch/captures.csv
+            data/batch/session_features.csv
+            models/model_metadata.json
+          if-no-files-found: warn
